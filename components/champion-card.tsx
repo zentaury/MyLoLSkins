@@ -1,9 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { title } from "./primitives";
-import { Card, CardBody, CardHeader } from "@nextui-org/card";
-import { Children } from "react";
+import { Card, CardHeader } from "@nextui-org/card";
 import Image from "next/image";
 
 export function ChampionCard({ name, title, skinNumber }: ChampionCardProps) {

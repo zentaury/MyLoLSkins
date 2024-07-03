@@ -20,15 +20,15 @@ export const siteConfig = {
   navMenuItems: [
     {
       label: "Champions",
-      href: "/profile",
+      href: "/",
     },
     {
       label: "My Skins",
-      href: "/dashboard",
+      href: "/my-skins",
     },
     {
       label: "Favorites",
-      href: "/projects",
+      href: "/favorites",
     },
   ],
   links: {

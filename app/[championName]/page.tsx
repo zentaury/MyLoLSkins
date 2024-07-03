@@ -1,5 +1,3 @@
-
-
 import { title } from "@/components/primitives";
 import Link from "next/link";
 import { getChampionData } from "../api/dataDragonAPI";
@@ -24,7 +22,7 @@ export default async function ChampionPage({ params }: { params: { championName:
                             key={skin.num + champion.name}
                             skinNumber={skin.num}
                             skinName={skin.name}
-                            championName={champion.name} />
+                            championName={champion.id}/>
                 })}
                 </div>
         </div>

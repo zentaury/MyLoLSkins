@@ -13,8 +13,3 @@ export async function getChampionData(championName:string){
     const data = response.json();
     return data;
 }
-
-// export async function getChampionSkins(championName:string ,championSkinNum:Number) {
-//     const response = await fetch(DATA_DRAGON_API + `/champion/loading/${championName}_${championSkinNum}.jpg`);
-
-// }
