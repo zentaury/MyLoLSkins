@@ -5,7 +5,6 @@ import { title } from "./primitives";
 
 export function ChampionsGrid({championsList}: ChampionsGridProps) {
     const championsArrayList = Object.entries(championsList);
-    console.log(championsArrayList);
     return(
         <div>
             <div className="text-center">
