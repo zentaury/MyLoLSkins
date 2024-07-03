@@ -1,0 +1,3 @@
+interface ChampionCardProps {
+    name: string
+}

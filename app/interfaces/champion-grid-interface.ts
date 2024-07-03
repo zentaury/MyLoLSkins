@@ -1,0 +1,3 @@
+interface ChampionsGridProps{
+    championsList: any
+}
