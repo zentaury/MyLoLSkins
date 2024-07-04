@@ -22,7 +22,9 @@ export default async function ChampionPage({ params }: { params: { championName:
                             key={skin.num + champion.name}
                             skinNumber={skin.num}
                             skinName={skin.name}
-                            championName={champion.id}/>
+                            championName={champion.id}
+                            championId={champion.id}
+                            />
                 })}
                 </div>
         </div>
