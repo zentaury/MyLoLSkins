@@ -8,7 +8,6 @@ export default async function ChampionPage({ params }: { params: { championName:
     const championObject = await getChampionData(championName);
     const champion = championObject.data[`${championName}`];
 
-    // console.log(champion);
     return (
         <div>
             <div>
