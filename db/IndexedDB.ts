@@ -3,6 +3,7 @@ import Dexie, { Table } from "dexie";
 export interface Skin {
     id?: number,
     championName: string,
+    championId: string,
     skinName: string;
     skinNumber: string
 
@@ -13,7 +14,7 @@ export class DB extends Dexie{
     constructor(){
         super('mylolskins');
         this.version(1).stores({
-            skins: '++id,championName,skinName,skinNumber'
+            skins: '++id,championName,championId,skinName,skinNumber'
         });
     }
 };

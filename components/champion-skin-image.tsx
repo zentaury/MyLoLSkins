@@ -4,7 +4,7 @@ import { Card, CardFooter} from "@nextui-org/card";
 import Image from "next/image";
 import { useCallback } from "react";
 
-export function ChampionSkinImage({ skinNumber, championName, skinName }: { skinNumber: string, championName: string, skinName: string }) {
+export function ChampionSkinImage({ skinNumber, championName, championId, skinName }: { skinNumber: string, championName: string, championId:string, skinName: string }) {
 
     let imageSrc = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championName}_${skinNumber}.jpg`;
     
@@ -12,11 +12,12 @@ export function ChampionSkinImage({ skinNumber, championName, skinName }: { skin
         if (championName && skinName && skinNumber) {
             await db.skins.add({
                 championName: championName,
+                championId: championId,
                 skinName: skinName,
                 skinNumber: skinNumber
             });
         }
-    }, [championName, skinName, skinNumber]);
+    }, [championName, championId, skinName, skinNumber]);
 
     return (
         <Card isPressable isHoverable onPress={addSkinToList}>
@@ -26,9 +27,8 @@ export function ChampionSkinImage({ skinNumber, championName, skinName }: { skin
             <Image
                 src={imageSrc}
                 alt={`Picture of ${championName}`}
-                width={300}
-                height={350}
                 priority
+                fill
             >
 
             </Image>
