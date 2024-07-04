@@ -1,7 +1,7 @@
 "use client";
 import { db } from "@/db/IndexedDB";
+import {Image} from "@nextui-org/image";
 import { Card, CardFooter} from "@nextui-org/card";
-import Image from "next/image";
 import { useCallback } from "react";
 
 export function ChampionSkinImage({ skinNumber, championName, championId, skinName }: { skinNumber: string, championName: string, championId:string, skinName: string }) {
@@ -20,17 +20,18 @@ export function ChampionSkinImage({ skinNumber, championName, championId, skinNa
     }, [championName, championId, skinName, skinNumber]);
 
     return (
-        <Card isPressable isHoverable onPress={addSkinToList}>
+        <Card isPressable isHoverable onPress={addSkinToList} className="h-[auto] w-[auto]">
             {/* <CardHeader className="absolute z-10 top-1 flex-col !place-items-end">
 
             </CardHeader> */}
             <Image
+                isZoomed
+                className="z-0 w-full h-full object-cover"
                 src={imageSrc}
                 alt={`Picture of ${championName}`}
-                priority
-                fill
+                width={300}
+                height={350}
             >
-
             </Image>
             <CardFooter className="absolute bg-black/40 bottom-0 justify-between">
                 <div>
