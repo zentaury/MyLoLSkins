@@ -20,7 +20,7 @@ export function ChampionSkinImage({ skinNumber, championName, championId, skinNa
     }, [championName, championId, skinName, skinNumber]);
 
     return (
-        <Card isPressable isHoverable onPress={addSkinToList} className="h-[auto] w-[auto]">
+        <Card isFooterBlurred isPressable isHoverable onPress={addSkinToList} className="h-[auto] w-[auto]">
             {/* <CardHeader className="absolute z-10 top-1 flex-col !place-items-end">
 
             </CardHeader> */}
