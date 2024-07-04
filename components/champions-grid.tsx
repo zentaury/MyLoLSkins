@@ -11,6 +11,16 @@ export function ChampionsGrid({championsList}: ChampionsGridProps) {
 
     const championsArrayList = Object.entries(championsList);
 
+    const [searchText, setSearchText] =  useState("");
+
+    const searchChampionFilter = (championList: any) => {
+        return championList.filter(
+            (champion: any) => champion[0].toLowerCase().includes(searchText.toLowerCase())
+        );
+    };
+
+    const filteredChampionList = searchChampionFilter(championsArrayList);
+
     useEffect(() => {
         const returnRandomChampionName = () => {
             let randomChampion = Math.floor(Math.random() * championsArrayList.length);
@@ -23,10 +33,10 @@ export function ChampionsGrid({championsList}: ChampionsGridProps) {
         <div>
             <div className="text-center">
                 <h1 className={title({size: "sm"})}>Champions</h1>
-                <Input className="py-5" type="text" label="Find Champion" placeholder={inputPlaceholderChampionName} />
+                <Input id="championNameInput" className="py-5" type="text" label="Find Champion" placeholder={inputPlaceholderChampionName} value={searchText} onChange={(e) => setSearchText(e.target.value)} />
             </div>
             <div className=" py-10 grid grid-cols-4 gap-4"> 
-                {championsArrayList.map((champion:any) => {return <ChampionCard key={champion[0]} name={champion[0]} title={champion[1].title} skinNumber={0}></ChampionCard>})}
+                {filteredChampionList.map((champion:any) => {return <ChampionCard key={champion[0]} name={champion[0]} title={champion[1].title} skinNumber={0}></ChampionCard>})}
             </div>
         </div>
 
