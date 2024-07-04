@@ -2,9 +2,13 @@
 export const MySkinsGrid = ({skinsList}:{skinsList:any}) =>{
     return (
         <>
-            {skinsList?.map((skin:any, index:number) => {
+            {
+            skinsList?.map((champion:any, index:number) => {
+                console.log(champion);
                 return (
-                    <h1 key={index}>{skin?.skinName}</h1>
+                    <div key={champion.id} className="grid grid-cols-4 gap-4">
+                         <h1>{champion.skin[0].name}</h1>
+                    </div>
                 );
             })}
         </>

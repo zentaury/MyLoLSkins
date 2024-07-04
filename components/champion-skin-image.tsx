@@ -4,20 +4,36 @@ import {Image} from "@nextui-org/image";
 import { Card, CardFooter} from "@nextui-org/card";
 import { useCallback } from "react";
 
-export function ChampionSkinImage({ skinNumber, championName, championId, skinName }: { skinNumber: string, championName: string, championId:string, skinName: string }) {
+interface Champion {
+    championId: string,
+    championKey: string, 
+    championName: string,
+    championTitle: string, 
+    skinId:string, 
+    skinNum:string, 
+    skinName:string
+} 
 
-    let imageSrc = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championName}_${skinNumber}.jpg`;
+export function ChampionSkinImage({championId, championKey, championName, championTitle, skinId, skinNum, skinName}:Champion) {
+
+    let imageSrc = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championId}_${skinNum}.jpg`;
     
     const addSkinToList = useCallback(async () => {
-        if (championName && skinName && skinNumber) {
+        try {
             await db.skins.add({
-                championName: championName,
-                championId: championId,
-                skinName: skinName,
-                skinNumber: skinNumber
+                key: championKey,
+                name: championName,
+                title: championTitle,
+                skin: [{
+                    id: skinId, 
+                    num: Number(skinNum),
+                    name: skinName
+                }]
             });
+        } catch (error) {
+            console.error("error", error);
         }
-    }, [championName, championId, skinName, skinNumber]);
+    }, [championId, championKey, championName, championTitle, skinId, skinNum, skinName]);
 
     return (
         <Card isFooterBlurred isPressable isHoverable onPress={addSkinToList} className="h-[auto] w-[auto]">

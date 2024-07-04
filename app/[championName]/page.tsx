@@ -8,6 +8,7 @@ export default async function ChampionPage({ params }: { params: { championName:
     const championObject = await getChampionData(championName);
     const champion = championObject.data[`${championName}`];
 
+    // console.log(champion);
     return (
         <div>
             <div>
@@ -19,11 +20,14 @@ export default async function ChampionPage({ params }: { params: { championName:
                 <div className=" py-10 grid grid-cols-4 gap-4 justify-center">
                 {champion.skins.map((skin: any) => {
                        return <ChampionSkinImage
-                            key={skin.num + champion.name}
-                            skinNumber={skin.num}
-                            skinName={skin.name}
-                            championName={champion.id}
-                            championId={champion.id}
+                       key={"Skin" + skin.id}
+                                championId={champion.id}
+                                championKey={champion.key}
+                                championName={champion.name}
+                                championTitle={champion.title}
+                                skinId={skin.id}
+                                skinName={skin.name}
+                                skinNum={skin.num}
                             />
                 })}
                 </div>

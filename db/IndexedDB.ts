@@ -2,10 +2,16 @@ import Dexie, { Table } from "dexie";
 
 export interface Skin {
     id?: number,
-    championName: string,
-    championId: string,
-    skinName: string;
-    skinNumber: string
+    key: string,
+    name: string,
+    title: string,
+    skin: [
+        {
+            id: string,
+            num: number,
+            name: string
+        }
+    ]
 
 }
 
