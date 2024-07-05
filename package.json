@@ -1,6 +1,7 @@
 {
-	"name": "next-app-template",
-	"version": "0.0.1",
+	"name": "my-lol-skins",
+	"version": "1.0.0",
+	"author": {"name": "Zentaury"},
 	"private": true,
 	"scripts": {
 		"dev": "next dev --turbo",
