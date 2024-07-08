@@ -5,7 +5,7 @@ import { Tooltip } from "@nextui-org/tooltip";
 
 export const OwnedSkinChecker = () => {
     return (
-        <div className=" w-[25] rounded bg-lime-700">
+        <div className=" justify-center w-10 rounded-full bg-lime-700">
             <Tooltip content="Skin Owned">
                 <CheckOutlined type="primary" shape="circle"/>
             </Tooltip>
