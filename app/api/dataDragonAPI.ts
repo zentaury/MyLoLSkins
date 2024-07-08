@@ -15,8 +15,3 @@ export async function getChampionData(championName:string){
     const data = response.json();
     return data;
 }
-
-export function getOwnedSkinsFromDB(){
-    const ownedSkinsList = useLiveQuery(() => db.skins.toArray());
-    return ownedSkinsList;
-}

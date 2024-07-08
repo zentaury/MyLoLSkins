@@ -2,10 +2,9 @@
 import { db } from "@/db/IndexedDB";
 import {Image} from "@nextui-org/image";
 import { Card, CardFooter, CardHeader} from "@nextui-org/card";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { OwnedSkinChecker } from "./owned-skin-checker";
 import { useLiveQuery } from "dexie-react-hooks";
-import { getOwnedSkinsFromDB } from "@/app/api/dataDragonAPI";
 
 interface Champion {
     championId: string,
