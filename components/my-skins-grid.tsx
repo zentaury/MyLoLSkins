@@ -12,7 +12,7 @@ import { Image } from "@nextui-org/image";
 export function MySkinsGrid() {
 
     const [champions, setChampions] = useState([]);
-    const [skins, setSkins]: any = useState();
+    const [skins, setSkins]: any = useState([]);
     const [searchText, setSearchText] = useState("");
 
     const championsArrayList: any = Object.entries(champions);
@@ -53,14 +53,14 @@ export function MySkinsGrid() {
                             <Image
                                 isZoomed
                                 className="z-0 w-full h-full object-cover"
-                                src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.name}_${champion.skin[0].num}.jpg`}
+                                src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.name}_${champion.skinNum}.jpg`}
                                 alt={`Picture of ${champion.name}`}
                                 width={300}
                                 height={350}
                             >
                             </Image>
                             <CardFooter className="absolute bg-black/40 bottom-0 justify-between">
-                                <h4 className="text-white font-semibold text-large">{champion.skin[0].name}</h4>
+                                <h4 className="text-white font-semibold text-large">{champion.skinName}</h4>
                             </CardFooter>
                         </Card>
                     );
