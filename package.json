@@ -1,7 +1,9 @@
 {
 	"name": "my-lol-skins",
 	"version": "1.0.0",
-	"author": {"name": "Zentaury"},
+	"author": {
+		"name": "Zentaury"
+	},
 	"private": true,
 	"scripts": {
 		"dev": "next dev --turbo",
@@ -10,6 +12,7 @@
 		"lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix"
 	},
 	"dependencies": {
+		"@ant-design/icons": "^5.3.7",
 		"@nextui-org/button": "2.0.34",
 		"@nextui-org/card": "^2.0.31",
 		"@nextui-org/code": "2.0.29",
@@ -24,6 +27,7 @@
 		"@nextui-org/switch": "2.0.31",
 		"@nextui-org/system": "2.2.1",
 		"@nextui-org/theme": "2.2.5",
+		"@nextui-org/tooltip": "^2.0.36",
 		"@react-aria/ssr": "3.9.4",
 		"@react-aria/visually-hidden": "3.8.12",
 		"clsx": "2.1.1",

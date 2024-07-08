@@ -1,8 +1,11 @@
 "use client";
 import { db } from "@/db/IndexedDB";
 import {Image} from "@nextui-org/image";
-import { Card, CardFooter} from "@nextui-org/card";
-import { useCallback } from "react";
+import { Card, CardFooter, CardHeader} from "@nextui-org/card";
+import { useCallback, useEffect, useState } from "react";
+import { OwnedSkinChecker } from "./owned-skin-checker";
+import { useLiveQuery } from "dexie-react-hooks";
+import { getOwnedSkinsFromDB } from "@/app/api/dataDragonAPI";
 
 interface Champion {
     championId: string,
@@ -17,6 +20,8 @@ interface Champion {
 export function ChampionSkinImage({championId, championKey, championName, championTitle, skinId, skinNum, skinName}:Champion) {
 
     let imageSrc = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championId}_${skinNum}.jpg`;
+
+    const [skin, setSkin]: any = useState([]);
     
     const addSkinToList = useCallback(async () => {
         try {
@@ -24,22 +29,28 @@ export function ChampionSkinImage({championId, championKey, championName, champi
                 key: championKey,
                 name: championName,
                 title: championTitle,
-                skin: [{
-                    id: skinId, 
-                    num: Number(skinNum),
-                    name: skinName
-                }]
+                skinId: skinId, 
+                skinNum: Number(skinNum),
+                skinName: skinName
             });
         } catch (error) {
             console.error("error", error);
         }
     }, [championId, championKey, championName, championTitle, skinId, skinNum, skinName]);
 
+
+        useLiveQuery(() => db.skins.where('skinId').equals(skinId).toArray().then((response) => { setSkin(JSON.parse(JSON.stringify(response))) }),
+          [skinId, championKey]
+        );
+
     return (
         <Card isFooterBlurred isPressable isHoverable onPress={addSkinToList} className="h-[auto] w-[auto]">
-            {/* <CardHeader className="absolute z-10 top-1 flex-col !place-items-end">
-
-            </CardHeader> */}
+            <CardHeader className="absolute z-10 top-1 flex-col !place-items-end">
+                {
+                    skin[0] &&
+                    <OwnedSkinChecker />
+                }
+            </CardHeader>
             <Image
                 isZoomed
                 className="z-0 w-full h-full object-cover"

@@ -5,13 +5,9 @@ export interface Skin {
     key: string,
     name: string,
     title: string,
-    skin: [
-        {
-            id: string,
-            num: number,
-            name: string
-        }
-    ]
+    skinId: string,
+    skinNum: number,
+    skinName: string
 
 }
 
@@ -20,7 +16,7 @@ export class DB extends Dexie{
     constructor(){
         super('mylolskins');
         this.version(1).stores({
-            skins: '++id,championName,championId,skinName,skinNumber'
+            skins: '++id,championName,championId,skinId,skinNum,skinName'
         });
     }
 };
