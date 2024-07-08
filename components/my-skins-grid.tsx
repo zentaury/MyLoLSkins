@@ -45,7 +45,7 @@ export function MySkinsGrid() {
     return (
         <div id="container" className="w-full">
             <h1 className={title()}>My Skins</h1>
-            <Input id="championNameInput" className="py-5 w-[auto]" type="text" label="Find Champion" placeholder="Find your Champion" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+            <Input id="championNameInput" className="py-5 w-[auto]" type="text" label="Find Champion" placeholder="Champion Name" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
             <div id="gridContainer" className="w-max py-10 grid grid-cols-4 gap-4">
                 {filteredSkins?.map((champion: any, index: number) => {
                     return (
