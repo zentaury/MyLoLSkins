@@ -12,10 +12,10 @@ export const siteConfig = {
       label: "My Skins",
       href: "/my-skins",
     },
-    {
-      label: "Favorites",
-      href: "/favorites",
-    }
+    // {
+    //   label: "Favorites",
+    //   href: "/favorites",
+    // }
   ],
   navMenuItems: [
     {
@@ -26,10 +26,10 @@ export const siteConfig = {
       label: "My Skins",
       href: "/my-skins",
     },
-    {
-      label: "Favorites",
-      href: "/favorites",
-    },
+    // {
+    //   label: "Favorites",
+    //   href: "/favorites",
+    // },
   ],
   links: {
     github: "https://github.com/nextui-org/nextui",
