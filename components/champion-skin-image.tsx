@@ -27,7 +27,7 @@ export function ChampionSkinImage({championId, championKey, championName, champi
         try {
             await db.skins.add({
                 key: championKey,
-                name: championName,
+                name: championId,
                 title: championTitle,
                 skinId: skinId, 
                 skinNum: Number(skinNum),
