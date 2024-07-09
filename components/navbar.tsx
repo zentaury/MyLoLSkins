@@ -80,7 +80,7 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2">
-          <span>0.9.0 Beta</span>
+          <span>0.11.0 Beta</span>
           {/* <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
             <TwitterIcon className="text-default-500" />
           </Link> */}
@@ -93,7 +93,7 @@ export const Navbar = () => {
           <ThemeSwitch />
         </NavbarItem>
         {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
-        <NavbarItem className="hidden md:flex">
+        <NavbarItem className="hidden">
           <Button
             isExternal
             as={Link}
