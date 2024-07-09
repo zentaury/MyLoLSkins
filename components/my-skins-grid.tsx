@@ -3,10 +3,12 @@ import { getAllChampionsList } from "@/app/api/dataDragonAPI";
 import { db } from "@/db/IndexedDB";
 import { Input } from "@nextui-org/input";
 import { useLiveQuery } from "dexie-react-hooks";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { title } from "@/components/primitives";
 import { Card, CardFooter } from "@nextui-org/card";
 import { Image } from "@nextui-org/image";
+import { Button } from "@nextui-org/button";
+
 
 
 export function MySkinsGrid() {
@@ -38,6 +40,12 @@ export function MySkinsGrid() {
     //filtering skin by skin key and champion key
     const filteredSkins = searchText.length === 0 ? skins : skins?.filter((skin: any) => skin.key.includes(championKey[0]));
 
+    //delete skin from db by skinId
+            const deleteSkinOwned = useCallback(async (id:number) => {
+            await db.skins.delete(id);
+            console.warn("Skin Deleted From Collection");
+          }, [])
+
     useEffect(() => {
         fetchAllChampios();
     }, []);
@@ -49,7 +57,7 @@ export function MySkinsGrid() {
             <div id="gridContainer" className="w-max py-10 grid grid-cols-4 gap-4">
                 {filteredSkins?.map((champion: any, index: number) => {
                     return (
-                        <Card id="mySkinsCard" key={index} isFooterBlurred isPressable isHoverable className="h-[auto] w-[auto]">
+                        <Card id="mySkinsCard" key={index} isFooterBlurred isHoverable className="h-[auto] w-[auto]">
                             <Image
                                 isZoomed
                                 className="z-0 w-full h-full object-cover"
@@ -61,6 +69,7 @@ export function MySkinsGrid() {
                             </Image>
                             <CardFooter className="absolute bg-black/40 bottom-0 justify-between">
                                 <h4 className="text-white font-semibold text-large">{champion.skinName}</h4>
+                                <Button color="danger" variant="ghost" radius="full" size="sm" onClick={() => deleteSkinOwned(champion.id)} >Remove</Button>
                             </CardFooter>
                         </Card>
                     );

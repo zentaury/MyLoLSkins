@@ -22,6 +22,7 @@ export function ChampionSkinImage({championId, championKey, championName, champi
 
     const [skin, setSkin]: any = useState([]);
     
+    //add skin to db
     const addSkinToList = useCallback(async () => {
         try {
             await db.skins.add({
@@ -37,7 +38,7 @@ export function ChampionSkinImage({championId, championKey, championName, champi
         }
     }, [championId, championKey, championName, championTitle, skinId, skinNum, skinName]);
 
-
+        //fetch skin from db by skinId
         useLiveQuery(() => db.skins.where('skinId').equals(skinId).toArray().then((response) => { setSkin(JSON.parse(JSON.stringify(response))) }),
           [skinId, championKey]
         );
@@ -45,6 +46,7 @@ export function ChampionSkinImage({championId, championKey, championName, champi
     return (
         <Card isFooterBlurred isPressable isHoverable onPress={addSkinToList} className="h-[auto] w-[auto]">
             <CardHeader className="absolute z-10 top-1 flex-col !place-items-end">
+
                 {
                     skin[0] &&
                     <OwnedSkinChecker />
