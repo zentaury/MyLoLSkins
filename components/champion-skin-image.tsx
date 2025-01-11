@@ -59,8 +59,8 @@ export function ChampionSkinImage({championId, championKey, championName, champi
                 className="z-0 w-full h-full object-cover"
                 src={imageSrc}
                 alt={`Picture of ${championName}`}
-                width={350}
-                height={550}
+                width={process.env.NEXT_PUBLIC_CARD_WIDTH}
+                height={process.env.NEXT_PUBLIC_CARD_HEIGHT}
             />
             <CardFooter className="absolute bg-black/40 bottom-0 justify-between">
                 <div>

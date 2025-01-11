@@ -21,8 +21,8 @@ export function ChampionCard({ name, title, skinNumber }: ChampionCardProps) {
                     alt="Card background"
                     className="z-0 w- h-full object-cover"
                     src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${name}_${skinNumber}.jpg`}
-                    width={350}
-                    height={550}
+                    width={process.env.NEXT_PUBLIC_CARD_WIDTH}
+                    height={process.env.NEXT_PUBLIC_CARD_HEIGHT}
                 />
             </Card>
         </Link>
