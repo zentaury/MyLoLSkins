@@ -4,6 +4,7 @@ import { Input } from "@nextui-org/input";
 import { ChampionCard } from "./champion-card";
 import { title } from "./primitives";
 import { useEffect, useState } from "react";
+import { ChampionsGridProps } from "@/app/interfaces/champion-grid-interface";
 
 export function ChampionsGrid({championsList}: ChampionsGridProps) {
 
@@ -36,7 +37,7 @@ export function ChampionsGrid({championsList}: ChampionsGridProps) {
                 <Input id="championNameInput" className="py-5" type="text" label="Find Champion" placeholder={inputPlaceholderChampionName} value={searchText} onChange={(e) => setSearchText(e.target.value)} />
             </div>
             <div className=" py-10 grid grid-cols-4 gap-4"> 
-                {filteredChampionList.map((champion:any) => {return <ChampionCard key={champion[0]} name={champion[0]} title={champion[1].title} skinNumber={0}></ChampionCard>})}
+                {filteredChampionList.map((champion:any) => {return <ChampionCard key={champion[0]} name={champion[0]} title={champion[1].title} skinNumber={0}/>})}
             </div>
         </div>
 

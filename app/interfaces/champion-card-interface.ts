@@ -1,4 +1,4 @@
-interface ChampionCardProps {
+ export interface ChampionCardProps {
     name: string
     title: string
     skinNumber: number

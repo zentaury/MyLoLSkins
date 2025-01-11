@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Card, CardHeader } from "@nextui-org/card";
 import {Image} from "@nextui-org/image";
+import { ChampionCardProps } from "@/app/interfaces/champion-card-interface";
 
 export function ChampionCard({ name, title, skinNumber }: ChampionCardProps) {
 

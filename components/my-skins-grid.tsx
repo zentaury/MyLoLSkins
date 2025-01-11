@@ -65,11 +65,10 @@ export function MySkinsGrid() {
                                 alt={`Picture of ${champion.name}`}
                                 width={300}
                                 height={350}
-                            >
-                            </Image>
+                            />
                             <CardFooter className="absolute bg-black/40 bottom-0 justify-between">
                                 <h4 className="text-white font-semibold text-large">{champion.skinName}</h4>
-                                <Button color="danger" variant="ghost" radius="full" size="sm" onClick={() => deleteSkinOwned(champion.id)} >Remove</Button>
+                                <Button color="danger" variant="ghost" radius="full" size="sm" onPress={() => deleteSkinOwned(champion.id)} >Remove</Button>
                             </CardFooter>
                         </Card>
                     );

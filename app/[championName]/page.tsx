@@ -1,10 +1,15 @@
 import { title } from "@/components/primitives";
+
 import Link from "next/link";
+
 import { getChampionData } from "../api/dataDragonAPI";
+
 import { ChampionSkinImage } from "@/components/champion-skin-image";
 
-export default async function ChampionPage({ params }: { params: { championName: string } }) {
-    const championName = params.championName;
+import { PageProps } from "@/.next/types/app/page";
+
+export default async function ChampionPage({ params }: PageProps) {
+    const {championName} = await params;
     const championObject = await getChampionData(championName);
     const champion = championObject.data[`${championName}`];
 

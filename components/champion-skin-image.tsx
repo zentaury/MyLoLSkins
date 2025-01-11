@@ -59,8 +59,7 @@ export function ChampionSkinImage({championId, championKey, championName, champi
                 alt={`Picture of ${championName}`}
                 width={300}
                 height={350}
-            >
-            </Image>
+            />
             <CardFooter className="absolute bg-black/40 bottom-0 justify-between">
                 <div>
                     <h4 className="text-white font-semibold text-large">{skinName}</h4>

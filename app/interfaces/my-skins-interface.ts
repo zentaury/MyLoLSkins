@@ -1,4 +1,4 @@
-interface MySkinsProps {
+export interface MySkinsProps {
     skinsList: [
         {
             id: number,
@@ -15,7 +15,7 @@ interface MySkinsProps {
     championsList: any
 }
 
-interface SkinsList {
+export interface SkinsList {
     skinsList: [
         {
             id: number,
