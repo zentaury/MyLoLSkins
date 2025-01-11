@@ -1,6 +1,7 @@
 "use client";
 import { db } from "@/db/IndexedDB";
 import {Image} from "@nextui-org/image";
+import NextImage from "next/image";
 import { Card, CardFooter, CardHeader} from "@nextui-org/card";
 import { useCallback, useState } from "react";
 import { OwnedSkinChecker } from "./owned-skin-checker";
@@ -54,11 +55,12 @@ export function ChampionSkinImage({championId, championKey, championName, champi
             </CardHeader>
             <Image
                 isZoomed
+                as={NextImage}
                 className="z-0 w-full h-full object-cover"
                 src={imageSrc}
                 alt={`Picture of ${championName}`}
-                width={300}
-                height={350}
+                width={350}
+                height={550}
             />
             <CardFooter className="absolute bg-black/40 bottom-0 justify-between">
                 <div>
