@@ -1,11 +1,11 @@
-const VERSIONS_API = "https://ddragon.leagueoflegends.com/api/versions.json";
+
 let cachedVersion: string | null = null;
 
 async function getCurrentVersion(): Promise<string> {
   if (cachedVersion !== null) {
     return cachedVersion;
   }
-  const response = await fetch(VERSIONS_API);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_DATA_DRAGON_GAME_PATCH_VERSION_URL}`);
   const versions: string[] = await response.json();
   cachedVersion = versions[0]; // La última versión es la primera en la lista
   return cachedVersion;
@@ -13,7 +13,7 @@ async function getCurrentVersion(): Promise<string> {
 
 async function getDataDragonApiUrl(): Promise<string> {
   const version = await getCurrentVersion();
-  return `https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US`;
+  return `${process.env.NEXT_PUBLIC_DATA_DRAGON_BASE_URL}/${version}/data/${process.env.NEXT_PUBLIC_DATA_DRAGON_LANGUAGE}`;
 }
 
 export async function getAllChampionsList() {
