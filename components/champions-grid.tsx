@@ -16,7 +16,7 @@ export function ChampionsGrid({championsList}: ChampionsGridProps) {
 
     const searchChampionFilter = (championList: any) => {
         return championList.filter(
-            (champion: any) => champion[0].toLowerCase().includes(searchText.toLowerCase())
+            (champion: any) => champion[1].name.toLowerCase().includes(searchText.toLowerCase())
         );
     };
 
@@ -37,7 +37,7 @@ export function ChampionsGrid({championsList}: ChampionsGridProps) {
                 <Input id="championNameInput" className="py-5" type="text" label="Find Champion" placeholder={inputPlaceholderChampionName} value={searchText} onChange={(e) => setSearchText(e.target.value)} />
             </div>
             <div className=" py-10 grid grid-cols-4 gap-4"> 
-                {filteredChampionList.map((champion:any) => {return <ChampionCard key={champion[0]} name={champion[0]} title={champion[1].title} skinNumber={0}/>})}
+                {filteredChampionList.map((champion:any) => {return <ChampionCard key={champion[0]} championKey={champion[0]} name={champion[1].name} title={champion[1].title} skinNumber={0}/>})}
             </div>
         </div>
 

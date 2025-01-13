@@ -6,7 +6,7 @@ import {Image} from "@nextui-org/image";
 import NextImage from "next/image";
 import { ChampionCardProps } from "@/app/interfaces/champion-card-interface";
 
-export function ChampionCard({ name, title, skinNumber }: ChampionCardProps) {
+export function ChampionCard({ championKey, name, title, skinNumber }: ChampionCardProps) {
 
     return (
         <Link href={name}>
@@ -20,7 +20,7 @@ export function ChampionCard({ name, title, skinNumber }: ChampionCardProps) {
                     as={NextImage}
                     alt="Card background"
                     className="z-0 w- h-full object-cover"
-                    src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${name}_${skinNumber}.jpg`}
+                    src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championKey}_${skinNumber}.jpg`}
                     width={process.env.NEXT_PUBLIC_CARD_WIDTH}
                     height={process.env.NEXT_PUBLIC_CARD_HEIGHT}
                 />
