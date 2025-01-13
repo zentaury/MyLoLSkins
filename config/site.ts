@@ -2,7 +2,7 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "My LoL Skins",
-  description: "Manage your League Of Legends Skins",
+  description: "Manage Your League Of Legends Skins",
   navItems: [
     {
       label: "Champions",
