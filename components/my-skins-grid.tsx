@@ -62,6 +62,7 @@ export function MySkinsGrid() {
                             <Image
                                 isZoomed
                                 as={NextImage}
+                                priority={true}
                                 className="z-0 w-full h-full object-cover"
                                 src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.name}_${champion.skinNum}.jpg`}
                                 alt={`Picture of ${champion.name}`}
