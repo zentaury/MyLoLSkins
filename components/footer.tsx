@@ -16,7 +16,7 @@ const Footer = () => {
           <Link href="https://www.riotgames.com/en" className="text-blue-400">
               Riot Games website
           </Link>
-          <br></br>
+          <br/>
           <Link href="https://github.com/zentaury" className="text-blue-400">
               Created by Zentaury
           </Link>
