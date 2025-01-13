@@ -9,7 +9,7 @@ import { ChampionCardProps } from "@/app/interfaces/champion-card-interface";
 export function ChampionCard({ championKey, name, title, skinNumber }: ChampionCardProps) {
 
     return (
-        <Link href={name}>
+        <Link href={championKey}>
             <Card isPressable isHoverable onPress={() => { }} className="border-none" radius="lg">
                 <CardHeader className="absolute z-10 top-1 flex-col !items-start">
                     <p className="text-tiny text-white/60 uppercase font-bold">{title}</p>
