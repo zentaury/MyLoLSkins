@@ -13,17 +13,13 @@ const Footer = () => {
         </p>
         <p>
           For more information, visit the official{" "}
-          <Link href="https://www.riotgames.com/en" passHref legacyBehavior>
-            <a className="text-blue-400" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.riotgames.com/en" className="text-blue-400">
               Riot Games website
-            </a>
           </Link>
           <br></br>
-          <Link href="https://github.com/zentaury" passHref legacyBehavior>
-            <a className="text-blue-400" target="_blank" rel="noopener noreferrer">
+          <Link href="https://github.com/zentaury" className="text-blue-400">
               Created by Zentaury
-            </a>
-          </Link>.
+          </Link>
         </p>
       </div>
       
