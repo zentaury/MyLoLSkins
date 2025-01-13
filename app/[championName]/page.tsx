@@ -10,6 +10,8 @@ import { PageProps } from "@/.next/types/app/page";
 import Image from "next/image";
 import { Card, CardHeader } from "@nextui-org/card";
 
+import ChampionSkinsCount from "@/components/champion-skins-count";
+
 export default async function ChampionPage({ params }: PageProps) {
     const {championName} = await params;
     const championObject = await getChampionData(championName);
@@ -27,6 +29,9 @@ export default async function ChampionPage({ params }: PageProps) {
                 <CardHeader className="absolute z-10 top-1 flex-col !items-start justify-start">    
                     <h2 className="text-white/60 text-4xl capitalize font-bold">{champion.title}</h2>
                     <h1 className="text-white text-7xl capitalize font-bold">{champion.name}</h1>
+                    <h3 className="text-white text-3xl capitalize font-medium"><ChampionSkinsCount championKey={champion.key}/>\{champion.skins.length} Skins</h3>
+                    <div>
+                    </div>
                 </CardHeader>
                 <div className="w-full">
                     <div className="w-full h-auto">

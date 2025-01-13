@@ -16,7 +16,7 @@ export class DB extends Dexie{
     constructor(){
         super('mylolskins');
         this.version(1).stores({
-            skins: '++id,championName,championId,skinId,skinNum,skinName'
+            skins: '++id,key,championName,championId,skinId,skinNum,skinName'
         });
     }
 };
