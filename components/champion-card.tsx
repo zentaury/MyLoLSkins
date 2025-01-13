@@ -18,6 +18,7 @@ export function ChampionCard({ championKey, name, title, skinNumber }: ChampionC
                 <Image
                     isZoomed
                     as={NextImage}
+                    priority={true}
                     alt="Card background"
                     className="z-0 w- h-full object-cover"
                     src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championKey}_${skinNumber}.jpg`}

@@ -42,7 +42,7 @@ export default async function ChampionPage({ params }: PageProps) {
                         width={1215}
                         height={717}
                      />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"/>
                 </div>
             </div>
             </Card>
