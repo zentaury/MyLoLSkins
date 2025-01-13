@@ -8,16 +8,6 @@ import { OwnedSkinChecker } from "./owned-skin-checker";
 import { useLiveQuery } from "dexie-react-hooks";
 import { Champion } from "@/app/interfaces/champion-interface";
 
-// interface Champion {
-//     championId: string,
-//     championKey: string, 
-//     championName: string,
-//     championTitle: string, 
-//     skinId:string, 
-//     skinNum:string, 
-//     skinName:string
-// } 
-
 export function ChampionSkinImage({championId, championKey, championName, championTitle, skinId, skinNum, skinName}:Champion) {
 
     let imageSrc = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championId}_${skinNum}.jpg`;
