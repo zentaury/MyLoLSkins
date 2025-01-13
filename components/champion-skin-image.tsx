@@ -64,7 +64,7 @@ export function ChampionSkinImage({championId, championKey, championName, champi
             />
             <CardFooter className="absolute bg-black/40 bottom-0 justify-between">
                 <div>
-                    <h4 className="text-white font-semibold text-large">{skinName}</h4>
+                    <h4 className="text-white font-semibold text-large capitalize">{skinName}</h4>
                 </div>
             </CardFooter>
         </Card>
