@@ -9,6 +9,7 @@ import { Providers } from "./providers";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -49,17 +50,7 @@ export default function RootLayout({
               {children}
               <SpeedInsights />
             </main>
-            <footer className="w-full flex items-center justify-center py-3">
-              <Link
-                isExternal
-                className="flex items-center gap-1 text-current"
-                href="https://github.com/zentaury"
-                title="homepage"
-              >
-                <span className="text-default-600">Created By</span>
-                <p className="text-primary">Zentaury</p>
-              </Link>
-            </footer>
+            <Footer/>
           </div>
         </Providers>
       </body>

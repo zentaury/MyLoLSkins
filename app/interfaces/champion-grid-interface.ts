@@ -1,3 +1,3 @@
-interface ChampionsGridProps{
+export interface ChampionsGridProps{
     championsList: any
 }

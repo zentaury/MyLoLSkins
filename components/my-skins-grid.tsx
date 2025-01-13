@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 import { title } from "@/components/primitives";
 import { Card, CardFooter } from "@nextui-org/card";
 import { Image } from "@nextui-org/image";
+import NextImage from "next/image";
 import { Button } from "@nextui-org/button";
 
 
@@ -60,16 +61,16 @@ export function MySkinsGrid() {
                         <Card id="mySkinsCard" key={index} isFooterBlurred isHoverable className="h-[auto] w-[auto]">
                             <Image
                                 isZoomed
+                                as={NextImage}
                                 className="z-0 w-full h-full object-cover"
                                 src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.name}_${champion.skinNum}.jpg`}
                                 alt={`Picture of ${champion.name}`}
-                                width={300}
-                                height={350}
-                            >
-                            </Image>
+                                width={process.env.NEXT_PUBLIC_CARD_WIDTH}
+                                height={process.env.NEXT_PUBLIC_CARD_HEIGHT}
+                            />
                             <CardFooter className="absolute bg-black/40 bottom-0 justify-between">
                                 <h4 className="text-white font-semibold text-large">{champion.skinName}</h4>
-                                <Button color="danger" variant="ghost" radius="full" size="sm" onClick={() => deleteSkinOwned(champion.id)} >Remove</Button>
+                                <Button color="danger" variant="ghost" radius="full" size="sm" onPress={() => deleteSkinOwned(champion.id)} >Remove</Button>
                             </CardFooter>
                         </Card>
                     );

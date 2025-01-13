@@ -1,20 +1,12 @@
 "use client";
 import { db } from "@/db/IndexedDB";
 import {Image} from "@nextui-org/image";
+import NextImage from "next/image";
 import { Card, CardFooter, CardHeader} from "@nextui-org/card";
 import { useCallback, useState } from "react";
 import { OwnedSkinChecker } from "./owned-skin-checker";
 import { useLiveQuery } from "dexie-react-hooks";
-
-interface Champion {
-    championId: string,
-    championKey: string, 
-    championName: string,
-    championTitle: string, 
-    skinId:string, 
-    skinNum:string, 
-    skinName:string
-} 
+import { Champion } from "@/app/interfaces/champion-interface";
 
 export function ChampionSkinImage({championId, championKey, championName, championTitle, skinId, skinNum, skinName}:Champion) {
 
@@ -25,14 +17,17 @@ export function ChampionSkinImage({championId, championKey, championName, champi
     //add skin to db
     const addSkinToList = useCallback(async () => {
         try {
-            await db.skins.add({
-                key: championKey,
-                name: championId,
-                title: championTitle,
-                skinId: skinId, 
-                skinNum: Number(skinNum),
-                skinName: skinName
-            });
+            const existingSkin = await db.skins.where("skinId").equals(skinId).first();
+            if(!existingSkin){
+                await db.skins.add({
+                    key: championKey,
+                    name: championId,
+                    title: championTitle,
+                    skinId: skinId, 
+                    skinNum: Number(skinNum),
+                    skinName: skinName
+                });
+            }
         } catch (error) {
             console.error("error", error);
         }
@@ -54,16 +49,16 @@ export function ChampionSkinImage({championId, championKey, championName, champi
             </CardHeader>
             <Image
                 isZoomed
+                as={NextImage}
                 className="z-0 w-full h-full object-cover"
                 src={imageSrc}
                 alt={`Picture of ${championName}`}
-                width={300}
-                height={350}
-            >
-            </Image>
+                width={process.env.NEXT_PUBLIC_CARD_WIDTH}
+                height={process.env.NEXT_PUBLIC_CARD_HEIGHT}
+            />
             <CardFooter className="absolute bg-black/40 bottom-0 justify-between">
                 <div>
-                    <h4 className="text-white font-semibold text-large">{skinName}</h4>
+                    <h4 className="text-white font-semibold text-large capitalize">{skinName}</h4>
                 </div>
             </CardFooter>
         </Card>

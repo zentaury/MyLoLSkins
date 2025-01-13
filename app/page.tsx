@@ -8,7 +8,7 @@ export default async function Home() {
   return (
     <section className="items-center justify-center">
       <div>
-        <ChampionsGrid key={"GridOne"} championsList={championsList}></ChampionsGrid>
+        <ChampionsGrid key={"GridOne"} championsList={championsList}/>
       </div>
     </section>
   );
