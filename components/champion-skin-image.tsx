@@ -6,16 +6,17 @@ import { Card, CardFooter, CardHeader} from "@nextui-org/card";
 import { useCallback, useState } from "react";
 import { OwnedSkinChecker } from "./owned-skin-checker";
 import { useLiveQuery } from "dexie-react-hooks";
+import { Champion } from "@/app/interfaces/champion-interface";
 
-interface Champion {
-    championId: string,
-    championKey: string, 
-    championName: string,
-    championTitle: string, 
-    skinId:string, 
-    skinNum:string, 
-    skinName:string
-} 
+// interface Champion {
+//     championId: string,
+//     championKey: string, 
+//     championName: string,
+//     championTitle: string, 
+//     skinId:string, 
+//     skinNum:string, 
+//     skinName:string
+// } 
 
 export function ChampionSkinImage({championId, championKey, championName, championTitle, skinId, skinNum, skinName}:Champion) {
 
@@ -26,14 +27,17 @@ export function ChampionSkinImage({championId, championKey, championName, champi
     //add skin to db
     const addSkinToList = useCallback(async () => {
         try {
-            await db.skins.add({
-                key: championKey,
-                name: championId,
-                title: championTitle,
-                skinId: skinId, 
-                skinNum: Number(skinNum),
-                skinName: skinName
-            });
+            const existingSkin = await db.skins.where("skinId").equals(skinId).first();
+            if(!existingSkin){
+                await db.skins.add({
+                    key: championKey,
+                    name: championId,
+                    title: championTitle,
+                    skinId: skinId, 
+                    skinNum: Number(skinNum),
+                    skinName: skinName
+                });
+            }
         } catch (error) {
             console.error("error", error);
         }
