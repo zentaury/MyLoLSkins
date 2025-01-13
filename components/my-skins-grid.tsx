@@ -30,7 +30,7 @@ export function MySkinsGrid() {
     //filtering champion by input text
     const searchChampionFilter = (championList: any) => {
         return championList.filter(
-            (champion: any) => champion[0].toLowerCase().includes(searchText.toLowerCase())
+            (champion: any) => champion[1].name.toLowerCase().includes(searchText.toLowerCase())
         );
     };
     const filteredChampionList: any = searchChampionFilter(championsArrayList);
