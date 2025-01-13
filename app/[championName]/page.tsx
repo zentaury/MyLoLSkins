@@ -17,6 +17,9 @@ export default async function ChampionPage({ params }: PageProps) {
     const championObject = await getChampionData(championName);
     const champion = championObject.data[`${championName}`];
 
+    // Filtrar las skins para excluir la primera (skin por defecto)
+    const skins = champion.skins.slice(1);
+
     return (
         <div>
             <div>
@@ -45,7 +48,7 @@ export default async function ChampionPage({ params }: PageProps) {
             </div>
             </Card>
                 <div className=" py-10 grid grid-cols-4 gap-4 justify-center">
-                {champion.skins.map((skin: any) => {
+                {skins.map((skin: any) => {
                        return <ChampionSkinImage
                        key={"Skin" + skin.id}
                                 championId={champion.id}
