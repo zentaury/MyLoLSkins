@@ -20,6 +20,7 @@ import {
 } from "@/components/icons";
 
 import packageJson from "@/package.json";
+import { Chip } from "@nextui-org/chip";
 
 export const Navbar = () => {
   // const searchInput = (
@@ -75,7 +76,9 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2">
-          <span>{packageJson.version}Beta</span>
+          <Chip>
+            <span>{packageJson.version} Beta</span>
+          </Chip>
           {/* <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
             <TwitterIcon className="text-default-500" />
           </Link> */}
