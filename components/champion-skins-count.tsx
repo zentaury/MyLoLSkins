@@ -15,7 +15,6 @@ const ChampionSkinsCount = ({ championKey }: ChampionSkinsCountProps) => {
     const fetchChampionSkins = async () => {
       try {
         const championSkins = await db.skins.where("key").equals(championKey).toArray();
-        console.log(championSkins);
         setTotalSkins(championSkins.length);
       } catch (err) {
         setError("Failed to fetch champion skins from IndexedDB");
