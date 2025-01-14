@@ -7,6 +7,14 @@ const nextConfig = {
                 hostname: "ddragon.leagueoflegends.com"
             }
         ]
+    },
+    async rewrites() {
+        return [
+            {
+                source: '/app/sitemap.xml',
+                destination: '/api/sitemap'
+            }
+        ];
     }
 }
 

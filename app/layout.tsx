@@ -10,6 +10,8 @@ import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 import Footer from "@/components/footer";
 
+import { keywords } from "@/config/seo-keywords";
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -35,7 +37,31 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="en">
-      <head />
+      <head>
+        <link rel="icon" href="/favicon.gif" type="image/gif" />
+        <meta property="og:type" content="website" />
+        <meta name="description" content={siteConfig.description} />
+        <meta name="keywords" content={keywords} />
+        <meta name="author" content="Zentaury" />
+        <meta property="og:title" content={siteConfig.name} />
+        <meta property="og:description" content={siteConfig.description} />
+        <meta property="og:url" content="https://mylolskins.com" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": siteConfig.name,
+            "url": "https://mylolskins.com",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://mylolskins.com/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          })}
+        </script>
+      </head>
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
