@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { Metadata, Viewport } from "next";
+import { Metadata, Viewport,  } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import clsx from "clsx";
 
@@ -12,8 +12,8 @@ import Footer from "@/components/footer";
 
 import { keywords } from "@/config/seo-keywords";
 
-import dynamic from 'next/dynamic'
-import Script from "next/script";
+import Adsense from "@/components/adsense";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: {
@@ -40,7 +40,8 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="en">
-      <head>
+      <Head>
+        <Adsense clientId="ca-pub-4817149381823553"/>
         <link rel="icon" href="/favicon.gif" type="image/gif" />
         <meta property="og:type" content="website" />
         <meta name="description" content={siteConfig.description} />
@@ -64,9 +65,7 @@ export default function RootLayout({
             }
           })}
         </script>
-        <Script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=$${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT}`} crossOrigin="anonymous"></Script>
-
-      </head>
+      </Head>
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
