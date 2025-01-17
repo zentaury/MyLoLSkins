@@ -9,7 +9,6 @@ import { Card, CardFooter } from "@nextui-org/card";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 import { Button } from "@nextui-org/button";
-import { Adsense } from "@ctrl/react-adsense";
 import AdBanner from "./ad-banner";
 
 

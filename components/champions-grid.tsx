@@ -5,7 +5,6 @@ import { ChampionCard } from "./champion-card";
 import { title } from "./primitives";
 import { useEffect, useState } from "react";
 import { ChampionsGridProps } from "@/app/interfaces/champion-grid-interface";
-import { Adsense } from "@ctrl/react-adsense";
 import AdBanner from "./ad-banner";
 
 export function ChampionsGrid({championsList}: ChampionsGridProps) {
