@@ -9,6 +9,7 @@ import { Card, CardFooter } from "@nextui-org/card";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 import { Button } from "@nextui-org/button";
+import { Adsense } from "@ctrl/react-adsense";
 
 
 
@@ -55,6 +56,7 @@ export function MySkinsGrid() {
         <div id="container" className="w-full">
             <h1 className={title()}>My Skins</h1>
             <Input id="championNameInput" className="py-5 w-[auto]" type="text" label="Find Champion" placeholder="Champion Name" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+            <Adsense client={`${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT}`} slot={`${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT}`} style={{ display: "block" }} layout="in-article"format="fluid"/>
             <div id="gridContainer" className="py-10 grid grid-cols-4 gap-4">
                 {filteredSkins?.map((champion: any, index: number) => {
                     return (

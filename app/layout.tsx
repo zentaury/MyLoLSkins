@@ -12,6 +12,9 @@ import Footer from "@/components/footer";
 
 import { keywords } from "@/config/seo-keywords";
 
+import dynamic from 'next/dynamic'
+import Script from "next/script";
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -61,7 +64,8 @@ export default function RootLayout({
             }
           })}
         </script>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4817149381823553" crossOrigin="anonymous"></script>
+        <Script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=$${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT}`} crossOrigin="anonymous"></Script>
+
       </head>
       <body
         className={clsx(
