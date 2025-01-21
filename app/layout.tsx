@@ -12,6 +12,7 @@ import Footer from "@/components/footer";
 
 import { keywords } from "@/config/seo-keywords";
 import Script from "next/script";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: {
@@ -38,7 +39,7 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="en">
-      <head>
+      <Head>
         <Script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT}`} strategy="lazyOnload" crossOrigin="anonymous"></Script>
         <link rel="icon" href="/favicon.gif" type="image/gif" />
         <meta property="og:type" content="website" />
@@ -63,7 +64,7 @@ export default function RootLayout({
             }
           })}
         </script>
-      </head>
+      </Head>
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
