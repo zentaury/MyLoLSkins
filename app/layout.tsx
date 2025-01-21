@@ -12,6 +12,7 @@ import Footer from "@/components/footer";
 
 import { keywords } from "@/config/seo-keywords";
 import Head from "next/head";
+import GoogleAdsense from "@/components/ad-banner2";
 
 export const metadata: Metadata = {
   title: {
@@ -73,13 +74,13 @@ export default function RootLayout({
           <div className="relative flex flex-col h-screen">
             <Navbar />
             <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
+              <GoogleAdsense pId={`${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT}`}/>
               {children}
               <SpeedInsights />
             </main>
             <Footer/>
           </div>
         </Providers>
-        <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT}`} crossOrigin="anonymous"/>
       </body>
     </html>
   );
