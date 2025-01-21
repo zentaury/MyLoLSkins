@@ -62,7 +62,6 @@ export default function RootLayout({
             }
           })}
         </script>
-        <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT}`} crossOrigin="anonymous"/>
       </Head>
       <body
         className={clsx(
@@ -80,6 +79,7 @@ export default function RootLayout({
             <Footer/>
           </div>
         </Providers>
+        <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT}`} crossOrigin="anonymous"/>
       </body>
     </html>
   );
