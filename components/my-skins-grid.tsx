@@ -9,7 +9,11 @@ import { Card, CardFooter } from "@nextui-org/card";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 import { Button } from "@nextui-org/button";
-import AdBanner from "./ad-banner";
+
+import dynamic from "next/dynamic";
+const AdBanner = dynamic(() => import("../components/ad-banner"), {
+    ssr: false,
+   });
 
 
 
@@ -56,7 +60,7 @@ export function MySkinsGrid() {
         <div id="container" className="w-full">
             <h1 className={title()}>My Skins</h1>
             <Input id="championNameInput" className="py-5 w-[auto]" type="text" label="Find Champion" placeholder="Champion Name" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
-            <AdBanner clientId="ca-pub-4817149381823553" format="auto" dataFullWithResponsive={true} slot={`${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT_DISPLAY1_MY_SKINS}`}/>
+            <AdBanner data-ad-slot={`${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT_DISPLAY1_HOME}`} data-full-width-responsive="true" data-ad-layout="in-article" data-ad-format="fluid"/>
             <div id="gridContainer" className="py-10 grid grid-cols-4 gap-4">
                 {filteredSkins?.map((champion: any, index: number) => {
                     return (
