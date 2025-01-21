@@ -40,8 +40,8 @@ export function ChampionsGrid({championsList}: ChampionsGridProps) {
             <div className="text-center">
                 <h1 className={title({size: "sm"})}>Champions</h1>
                 <Input id="championNameInput" className="py-5" type="text" label="Find Champion" placeholder={inputPlaceholderChampionName} value={searchText} onChange={(e) => setSearchText(e.target.value)} />
-                <div className="h-32 w-full">
-                    <AdBanner data-ad-slot={`${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT_DISPLAY1_HOME}`} data-full-width-responsive="true" data-ad-layout="in-article" data-ad-format="fluid"/>
+                <div className="h-32 w-full mb-5">
+                    <AdBanner key={1} data-ad-slot={`${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT_DISPLAY1_HOME}`} data-full-width-responsive="true" data-ad-layout="in-article" data-ad-format="fluid"/>
                 </div>
             </div>
             <div className=" py-10 grid grid-cols-4 gap-4"> 

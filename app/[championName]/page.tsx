@@ -30,8 +30,6 @@ export default async function ChampionPage({ params }: PageProps) {
                     <h2 className="text-white/60 text-4xl capitalize font-bold">{champion.title}</h2>
                     <h1 className="text-white text-7xl capitalize font-bold">{champion.name}</h1>
                     <h3 className="text-white text-3xl capitalize font-medium"><ChampionSkinsCount championKey={champion.key}/>\{champion.skins.length} Skins</h3>
-                    <div>
-                    </div>
                 </CardHeader>
                 <div className="w-full">
                     <div className="w-full h-auto">

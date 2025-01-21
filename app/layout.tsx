@@ -11,7 +11,6 @@ import { Navbar } from "@/components/navbar";
 import Footer from "@/components/footer";
 
 import { keywords } from "@/config/seo-keywords";
-import Script from "next/script";
 import Head from "next/head";
 
 export const metadata: Metadata = {
@@ -40,7 +39,6 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <Head>
-        <Script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT}`} strategy="lazyOnload" crossOrigin="anonymous"></Script>
         <link rel="icon" href="/favicon.gif" type="image/gif" />
         <meta property="og:type" content="website" />
         <meta name="description" content={siteConfig.description} />
@@ -64,6 +62,7 @@ export default function RootLayout({
             }
           })}
         </script>
+        <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT}`} crossOrigin="anonymous"/>
       </Head>
       <body
         className={clsx(
