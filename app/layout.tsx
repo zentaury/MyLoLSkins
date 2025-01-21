@@ -11,8 +11,7 @@ import { Navbar } from "@/components/navbar";
 import Footer from "@/components/footer";
 
 import { keywords } from "@/config/seo-keywords";
-import Head from "next/head";
-import GoogleAdsense from "@/components/ad-banner2";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: {
@@ -39,7 +38,8 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="en">
-      <Head>
+      <head>
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4817149381823553" crossOrigin="anonymous" strategy="lazyOnload"/>
         <link rel="icon" href="/favicon.gif" type="image/gif" />
         <meta property="og:type" content="website" />
         <meta name="description" content={siteConfig.description} />
@@ -63,7 +63,7 @@ export default function RootLayout({
             }
           })}
         </script>
-      </Head>
+      </head>
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
@@ -74,7 +74,6 @@ export default function RootLayout({
           <div className="relative flex flex-col h-screen">
             <Navbar />
             <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
-              <GoogleAdsense pId={`${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT}`}/>
               {children}
               <SpeedInsights />
             </main>

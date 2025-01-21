@@ -5,7 +5,7 @@ import { ChampionCard } from "./champion-card";
 import { title } from "./primitives";
 import { useEffect, useState } from "react";
 import { ChampionsGridProps } from "@/app/interfaces/champion-grid-interface";
-import AdBanner from "./ad-banner";
+import GoogleAdUnit from "./google-ad-unit";
 
 export function ChampionsGrid({championsList}: ChampionsGridProps) {
 
@@ -36,7 +36,7 @@ export function ChampionsGrid({championsList}: ChampionsGridProps) {
             <div className="text-center">
                 <h1 className={title({size: "sm"})}>Champions</h1>
                 <Input id="championNameInput" className="" type="text" label="Find Champion" placeholder={inputPlaceholderChampionName} value={searchText} onChange={(e) => setSearchText(e.target.value)} />
-                <AdBanner key={2} data-ad-slot={`4613616167`} data-full-width-responsive="true" data-ad-layout="in-article" data-ad-format="fluid"/>
+                <GoogleAdUnit><ins className="adsbygoogle" style={{display:"block"}} data-ad-client="ca-pub-4817149381823553" data-ad-slot="5511098581" data-ad-format="auto" data-full-width-responsive="true"></ins></GoogleAdUnit>
             </div>
             <div className=" py-10 grid grid-cols-4 gap-4"> 
                 {filteredChampionList.map((champion:any) => {return <ChampionCard key={champion[0]} championKey={champion[0]} name={champion[1].name} title={champion[1].title} skinNumber={0}/>})}
