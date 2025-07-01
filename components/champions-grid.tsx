@@ -35,6 +35,8 @@ export function ChampionsGrid({championsList}: ChampionsGridProps) {
         <div>
             <div className="text-center">
                 <h1 className={title({size: "sm"})}>Champions</h1>
+                <br />
+                <br />
                 <Input id="championNameInput" className="" type="text" label="Find Champion" placeholder={inputPlaceholderChampionName} value={searchText} onChange={(e) => setSearchText(e.target.value)} />
                 <GoogleAdUnit><ins className="adsbygoogle" style={{display:"block"}} data-ad-client="ca-pub-4817149381823553" data-ad-slot="5511098581" data-ad-format="auto" data-full-width-responsive="true"></ins></GoogleAdUnit>
             </div>

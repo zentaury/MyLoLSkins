@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "@/db/IndexedDB";
 
 interface ChampionSkinsCountProps {
@@ -8,26 +8,14 @@ interface ChampionSkinsCountProps {
 }
 
 const ChampionSkinsCount = ({ championKey }: ChampionSkinsCountProps) => {
-  const [totalSkins, setTotalSkins] = useState<number>(0);
-  const [error, setError] = useState<string | null>(null);
+  // Usar useLiveQuery para reactividad automática
+  const championSkins = useLiveQuery(
+    () => db.skins.where("key").equals(championKey).toArray(),
+    [championKey]
+  );
 
-  useEffect(() => {
-    const fetchChampionSkins = async () => {
-      try {
-        const championSkins = await db.skins.where("key").equals(championKey).toArray();
-        setTotalSkins(championSkins.length);
-      } catch (err) {
-        setError("Failed to fetch champion skins from IndexedDB");
-        console.error(err);
-      }
-    };
-
-    fetchChampionSkins();
-  }, [championKey]);
-
-  if (error) {
-    return <div className="text-red-500">{error}</div>;
-  }
+  // Contar skins poseídas (sin incluir skin default)
+  const totalSkins = championSkins?.length ?? 0;
 
   return (
     <p className="inline text-white">
