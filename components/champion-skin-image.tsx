@@ -3,7 +3,7 @@ import { db } from "@/db/IndexedDB";
 import {Image} from "@nextui-org/image";
 import NextImage from "next/image";
 import { Card, CardFooter, CardHeader} from "@nextui-org/card";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { OwnedSkinChecker } from "./owned-skin-checker";
 import { useLiveQuery } from "dexie-react-hooks";
 import { Champion } from "@/app/interfaces/champion-interface";
@@ -12,7 +12,11 @@ export function ChampionSkinImage({championId, championKey, championName, champi
 
     let imageSrc = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championId}_${skinNum}.jpg`;
 
-    const [skin, setSkin]: any = useState([]);
+    // Usar useLiveQuery directamente sin useState adicional
+    const skin = useLiveQuery(
+        () => db.skins.where('skinId').equals(skinId).first(),
+        [skinId]
+    );
     
     //add skin to db
     const addSkinToList = useCallback(async () => {
@@ -33,17 +37,12 @@ export function ChampionSkinImage({championId, championKey, championName, champi
         }
     }, [championId, championKey, championName, championTitle, skinId, skinNum, skinName]);
 
-        //fetch skin from db by skinId
-        useLiveQuery(() => db.skins.where('skinId').equals(skinId).toArray().then((response) => { setSkin(JSON.parse(JSON.stringify(response))) }),
-          [skinId, championKey]
-        );
-
     return (
         <Card isFooterBlurred isPressable isHoverable onPress={addSkinToList} className="h-[auto] w-[auto]">
             <CardHeader className="absolute z-10 top-1 flex-col !place-items-end">
 
                 {
-                    skin[0] &&
+                    skin &&
                     <OwnedSkinChecker />
                 }
             </CardHeader>
