@@ -26,7 +26,7 @@ export default function AboutPage() {
             to manage, organize, and value your digital cosmetic investments in League of Legends.
           </p>
           <p className="text-default-600 leading-relaxed mt-4">
-            Whether you're a casual player with a few favorite skins or a collector with hundreds of cosmetics, 
+            Whether you&apos;re a casual player with a few favorite skins or a collector with hundreds of cosmetics, 
             My LoL Skins helps you organize your collection and understand its value.
           </p>
         </CardBody>
@@ -44,7 +44,7 @@ export default function AboutPage() {
               <ul className="space-y-2 text-default-600">
                 <li>• Browse all League of Legends champions</li>
                 <li>• Real-time search and filtering</li>
-                <li>• Updated champion data from Riot's API</li>
+                <li>• Updated champion data from Riot&apos;s API</li>
                 <li>• High-quality champion artwork</li>
               </ul>
             </div>
