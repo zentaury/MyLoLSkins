@@ -10,6 +10,7 @@ import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 import { Button } from "@nextui-org/button";
 import OptimizedAdBanner from "./optimized-ad-banner";
+import { SkinsCollectionStats } from "./skins-collection-stats";
 
 
 
@@ -55,10 +56,12 @@ export function MySkinsGrid() {
     return (
         <div id="container" className="w-full">
             <h1 className={title()}>My Skins</h1>
+            <div className="py-5"></div>
+            <SkinsCollectionStats/>
             <Input id="championNameInput" className="py-5 w-[auto]" type="text" label="Find Champion" placeholder="Champion Name" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
             <OptimizedAdBanner 
                 slot={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT_MY_SKINS || ""}
-                className="py-4"
+                className="py-5"
             />
             <div id="gridContainer" className="py-10 grid grid-cols-4 gap-4">
                 {filteredSkins?.map((champion: any, index: number) => {
