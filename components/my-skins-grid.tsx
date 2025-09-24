@@ -64,7 +64,7 @@ export function MySkinsGrid() {
                 slot={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT_MY_SKINS || ""}
                 className="py-5"
             />
-            <div id="gridContainer" className="py-10 grid grid-cols-4 gap-4">
+            <div id="gridContainer" className="py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {filteredSkins?.map((champion: any, index: number) => {
                     return (
                         <Card id="mySkinsCard" key={index} isFooterBlurred isHoverable className="h-[auto] w-[auto]">

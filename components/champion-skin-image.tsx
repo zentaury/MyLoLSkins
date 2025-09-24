@@ -55,9 +55,9 @@ export function ChampionSkinImage({championId, championKey, championName, champi
                 width={process.env.NEXT_PUBLIC_CARD_WIDTH}
                 height={process.env.NEXT_PUBLIC_CARD_HEIGHT}
             />
-            <CardFooter className="absolute bg-black/40 bottom-0 justify-between">
-                <div>
-                    <h4 className="text-white font-semibold text-large capitalize">{skinName}</h4>
+            <CardFooter className="absolute bg-black/40 bottom-0 justify-between p-2 sm:p-3">
+                <div className="w-full">
+                    <h4 className="text-white font-semibold text-sm sm:text-base md:text-large capitalize truncate">{skinName}</h4>
                 </div>
             </CardFooter>
         </Card>

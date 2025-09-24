@@ -38,7 +38,7 @@ export default function AboutPage() {
           <h2 className={title({ size: "sm" })}>Key Features</h2>
         </CardHeader>
         <CardBody>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h3 className="text-lg font-semibold mb-3 text-primary">🏆 Champion Browser</h3>
               <ul className="space-y-2 text-default-600">
@@ -89,44 +89,44 @@ export default function AboutPage() {
         </CardHeader>
         <CardBody>
           <div className="space-y-6">
-            <div className="flex items-start gap-4">
-              <Chip color="primary" variant="flat" className="mt-1">1</Chip>
-              <div>
-                <h3 className="font-semibold mb-2">Browse Champions</h3>
-                <p className="text-default-600">
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <Chip color="primary" variant="flat" className="mt-1 min-h-[44px] flex items-center">1</Chip>
+              <div className="flex-1">
+                <h3 className="font-semibold mb-2 text-lg">Browse Champions</h3>
+                <p className="text-default-600 leading-relaxed">
                   Start by exploring the champions page where you can search and view all League of Legends champions 
                   with their beautiful loading screen artwork.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
-              <Chip color="secondary" variant="flat" className="mt-1">2</Chip>
-              <div>
-                <h3 className="font-semibold mb-2">Explore Skins</h3>
-                <p className="text-default-600">
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <Chip color="secondary" variant="flat" className="mt-1 min-h-[44px] flex items-center">2</Chip>
+              <div className="flex-1">
+                <h3 className="font-semibold mb-2 text-lg">Explore Skins</h3>
+                <p className="text-default-600 leading-relaxed">
                   Click on any champion to view all their available skins. Each skin is displayed with high-quality 
                   images and you can see which ones you already own.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
-              <Chip color="success" variant="flat" className="mt-1">3</Chip>
-              <div>
-                <h3 className="font-semibold mb-2">Build Your Collection</h3>
-                <p className="text-default-600">
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <Chip color="success" variant="flat" className="mt-1 min-h-[44px] flex items-center">3</Chip>
+              <div className="flex-1">
+                <h3 className="font-semibold mb-2 text-lg">Build Your Collection</h3>
+                <p className="text-default-600 leading-relaxed">
                   Add skins to your collection by clicking on them. Your collection is saved locally in your browser 
                   and persists between sessions.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
-              <Chip color="warning" variant="flat" className="mt-1">4</Chip>
-              <div>
-                <h3 className="font-semibold mb-2">Track Value</h3>
-                <p className="text-default-600">
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <Chip color="warning" variant="flat" className="mt-1 min-h-[44px] flex items-center">4</Chip>
+              <div className="flex-1">
+                <h3 className="font-semibold mb-2 text-lg">Track Value</h3>
+                <p className="text-default-600 leading-relaxed">
                   Visit your &quot;My Skins&quot; page to add RP prices to your skins and see the total value of your collection. 
                   Use quick-select buttons for common prices or enter custom values.
                 </p>
