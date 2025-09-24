@@ -43,7 +43,7 @@ export function ChampionsGrid({championsList}: ChampionsGridProps) {
                     className="py-4"
                 />
             </div>
-            <div className=" py-10 grid grid-cols-4 gap-4"> 
+            <div className="py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"> 
                 {filteredChampionList.map((champion:any) => {return <ChampionCard key={champion[0]} championKey={champion[0]} name={champion[1].name} title={champion[1].title} skinNumber={0}/>})}
             </div>
         </div>

@@ -24,14 +24,16 @@ export default async function ChampionPage({ params }: PageProps) {
 
     return (
         <div>
-            <div>
-                <Link href="/" className="text-2xl font-bold">Back</Link>
+            <div className="mb-4">
+                <Link href="/" className="text-lg sm:text-xl md:text-2xl font-bold hover:text-primary transition-colors">
+                    ← Back to Champions
+                </Link>
             </div>
             <Card isPressable={false} className="">
-                <CardHeader className="absolute z-10 top-1 flex-col !items-start justify-start">    
-                    <h2 className="text-white/60 text-4xl capitalize font-bold">{champion.title}</h2>
-                    <h1 className="text-white text-7xl capitalize font-bold">{champion.name}</h1>
-                    <h3 className="text-white text-3xl capitalize font-medium"><ChampionSkinsCount championKey={champion.key}/>\{champion.skins.length - 1} Skins</h3>
+                <CardHeader className="absolute z-10 top-1 flex-col !items-start justify-start p-4 sm:p-6">    
+                    <h2 className="text-white/60 text-lg sm:text-2xl md:text-3xl lg:text-4xl capitalize font-bold">{champion.title}</h2>
+                    <h1 className="text-white text-2xl sm:text-4xl md:text-5xl lg:text-7xl capitalize font-bold">{champion.name}</h1>
+                    <h3 className="text-white text-sm sm:text-lg md:text-2xl lg:text-3xl capitalize font-medium"><ChampionSkinsCount championKey={champion.key}/>\{champion.skins.length - 1} Skins</h3>
                 </CardHeader>
                 <div className="w-full">
                     <div className="w-full h-auto">
@@ -49,7 +51,7 @@ export default async function ChampionPage({ params }: PageProps) {
                     </div>
                 </div>
             </Card>
-                <div className=" py-10 grid grid-cols-4 gap-4 justify-center">
+                <div className="py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
                 {skins.map((skin: any) => {
                        return <ChampionSkinImage
                        key={"Skin" + skin.id}

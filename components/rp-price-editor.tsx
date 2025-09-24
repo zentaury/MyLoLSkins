@@ -61,51 +61,53 @@ export function RPPriceEditor({ skinId, currentPrice, skinName, onPriceUpdate }:
 
     if (isEditing) {
         return (
-            <div className="flex flex-col gap-2 p-2 bg-default-100 rounded-lg">
-                <p className="text-xs text-default-600">{skinName}</p>
+            <div className="flex flex-col gap-3 p-3 bg-default-100 rounded-lg w-full max-w-sm mx-auto">
+                <p className="text-sm text-default-600 text-center font-medium">{skinName}</p>
                 <Input
-                    size="sm"
+                    size="md"
                     type="number"
                     placeholder="RP price"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                     min="0"
                     max="10000"
-                    endContent={<span className="text-xs">RP</span>}
+                    endContent={<span className="text-sm font-medium">RP</span>}
+                    className="text-center"
                 />
-                <div className="flex flex-wrap gap-1">
-                    <Button size="sm" variant="flat" onPress={() => setPrice("520")}>520</Button>
-                    <Button size="sm" variant="flat" onPress={() => setPrice("750")}>750</Button>
-                    <Button size="sm" variant="flat" onPress={() => setPrice("975")}>975</Button>
-                    <Button size="sm" variant="flat" onPress={() => setPrice("1350")}>1350</Button>
-                    <Button size="sm" variant="flat" onPress={() => setPrice("1820")}>1820</Button>
-                    <Button size="sm" variant="flat" onPress={() => setPrice("3250")}>3250</Button>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    <Button size="md" variant="flat" onPress={() => setPrice("520")} className="min-h-[44px]">520</Button>
+                    <Button size="md" variant="flat" onPress={() => setPrice("750")} className="min-h-[44px]">750</Button>
+                    <Button size="md" variant="flat" onPress={() => setPrice("975")} className="min-h-[44px]">975</Button>
+                    <Button size="md" variant="flat" onPress={() => setPrice("1350")} className="min-h-[44px]">1350</Button>
+                    <Button size="md" variant="flat" onPress={() => setPrice("1820")} className="min-h-[44px]">1820</Button>
+                    <Button size="md" variant="flat" onPress={() => setPrice("3250")} className="min-h-[44px]">3250</Button>
                 </div>
-                <div className="flex gap-1">
+                <div className="flex flex-col sm:flex-row gap-2">
                     <Button 
-                        size="sm" 
+                        size="md" 
                         color="primary" 
                         onPress={handleSave}
                         isLoading={isLoading}
-                        className="flex-1"
+                        className="flex-1 min-h-[44px]"
                     >
                         Save
                     </Button>
                     <Button 
-                        size="sm" 
+                        size="md" 
                         variant="light" 
                         onPress={handleCancel}
-                        className="flex-1"
+                        className="flex-1 min-h-[44px]"
                     >
                         Cancel
                     </Button>
                     {currentPrice && (
                         <Button 
-                            size="sm" 
+                            size="md" 
                             color="danger" 
                             variant="flat"
                             onPress={handleRemovePrice}
                             isLoading={isLoading}
+                            className="min-h-[44px]"
                         >
                             Remove
                         </Button>
@@ -117,11 +119,11 @@ export function RPPriceEditor({ skinId, currentPrice, skinName, onPriceUpdate }:
 
     return (
         <Button
-            size="sm"
+            size="md"
             variant={currentPrice ? "flat" : "ghost"}
             color={currentPrice ? "success" : "default"}
             onPress={() => setIsEditing(true)}
-            className="min-w-unit-16"
+            className="min-w-unit-20 min-h-[44px] text-sm font-medium"
         >
             {currentPrice ? `${currentPrice} RP` : "Add RP"}
         </Button>
