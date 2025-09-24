@@ -57,7 +57,7 @@ export function MySkinsGrid() {
     return (
         <div id="container" className="w-full">
             <h1 className={title()}>My Skins</h1>
-            <div className="py-5"></div>
+            <div className="py-5" />
             <SkinsCollectionStats/>
             <Input id="championNameInput" className="py-5 w-[auto]" type="text" label="Find Champion" placeholder="Champion Name" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
             <OptimizedAdBanner 
