@@ -12,6 +12,10 @@ export const siteConfig = {
       label: "My Skins",
       href: "/my-skins",
     },
+    {
+      label: "About",
+      href: "/about",
+    },
     // {
     //   label: "Favorites",
     //   href: "/favorites",
@@ -25,6 +29,10 @@ export const siteConfig = {
     {
       label: "My Skins",
       href: "/my-skins",
+    },
+    {
+      label: "About",
+      href: "/about",
     },
     // {
     //   label: "Favorites",
