@@ -11,6 +11,7 @@ import NextImage from "next/image";
 import { Button } from "@nextui-org/button";
 import OptimizedAdBanner from "./optimized-ad-banner";
 import { SkinsCollectionStats } from "./skins-collection-stats";
+import { RPPriceEditor } from "./rp-price-editor";
 
 
 
@@ -77,9 +78,28 @@ export function MySkinsGrid() {
                                 width={process.env.NEXT_PUBLIC_CARD_WIDTH}
                                 height={process.env.NEXT_PUBLIC_CARD_HEIGHT}
                             />
-                            <CardFooter className="absolute bg-black/40 bottom-0 justify-between">
-                                <h4 className="text-white font-semibold text-large">{champion.skinName}</h4>
-                                <Button color="danger" variant="ghost" radius="full" size="sm" onPress={() => deleteSkinOwned(champion.id)} >Remove</Button>
+                            <CardFooter className="absolute bg-black/40 bottom-0 flex-col gap-2">
+                                <div className="w-full flex justify-between items-center">
+                                    <h4 className="text-white font-semibold text-large">{champion.skinName}</h4>
+                                    <Button color="danger" variant="ghost" radius="full" size="sm" onPress={() => deleteSkinOwned(champion.id)} >Remove</Button>
+                                </div>
+                                <div className="w-full flex justify-center">
+                                    <RPPriceEditor
+                                        skinId={champion.id}
+                                        currentPrice={champion.rpPrice}
+                                        skinName={champion.skinName}
+                                        onPriceUpdate={(newPrice) => {
+                                            // Actualizar el estado local para reflejar el cambio inmediatamente
+                                            setSkins((prevSkins: any) => 
+                                                prevSkins.map((skin: any) => 
+                                                    skin.id === champion.id 
+                                                        ? { ...skin, rpPrice: newPrice }
+                                                        : skin
+                                                )
+                                            );
+                                        }}
+                                    />
+                                </div>
                             </CardFooter>
                         </Card>
                     );

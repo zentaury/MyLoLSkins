@@ -7,7 +7,8 @@ export interface Skin {
     title: string,
     skinId: string,
     skinNum: number,
-    skinName: string
+    skinName: string,
+    rpPrice?: number
 
 }
 
@@ -17,6 +18,9 @@ export class DB extends Dexie{
         super('mylolskins');
         this.version(1).stores({
             skins: '++id,key,championName,championId,skinId,skinNum,skinName'
+        });
+        this.version(2).stores({
+            skins: '++id,key,championName,championId,skinId,skinNum,skinName,rpPrice'
         });
     }
 };

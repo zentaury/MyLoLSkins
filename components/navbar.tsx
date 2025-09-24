@@ -77,7 +77,7 @@ export const Navbar = () => {
       >
         <NavbarItem className="hidden sm:flex gap-2">
           <Chip>
-            <span>{packageJson.version} Beta</span>
+            <span>{packageJson.version} Release</span>
           </Chip>
           {/* <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
             <TwitterIcon className="text-default-500" />
@@ -100,7 +100,7 @@ export const Navbar = () => {
             startContent={<HeartFilledIcon className="text-danger" />}
             variant="flat"
           >
-            Sponsor
+            Did you like it? Support Now!
           </Button>
         </NavbarItem>
       </NavbarContent>

@@ -13,6 +13,13 @@ export function SkinsCollectionStats() {
     const totalSkins = skins?.length || 0;
     const uniqueChampions = new Set(skins?.map(skin => skin.key)).size || 0;
     
+    // Calcular valor total en RP
+    const totalRPValue = skins?.reduce((total: number, skin) => {
+        return total + (skin.rpPrice || 0);
+    }, 0) || 0;
+    
+    const skinsWithPrice = skins?.filter(skin => skin.rpPrice && skin.rpPrice > 0).length || 0;
+    
     // Agrupar skins por campeón para mostrar el campeón con más skins
     const skinsByChampion = skins?.reduce((acc: any, skin) => {
         acc[skin.key] = (acc[skin.key] || 0) + 1;
@@ -75,6 +82,34 @@ export function SkinsCollectionStats() {
                                 className="text-lg font-bold"
                             >
                                 {(totalSkins / uniqueChampions).toFixed(1)}
+                            </Chip>
+                        </div>
+                    )}
+                    
+                    {totalRPValue > 0 && (
+                        <div className="text-center">
+                            <p className="text-small text-default-500">Total RP Value</p>
+                            <Chip 
+                                color="danger" 
+                                variant="flat" 
+                                size="lg"
+                                className="text-lg font-bold"
+                            >
+                                {totalRPValue.toLocaleString()} RP
+                            </Chip>
+                        </div>
+                    )}
+                    
+                    {skinsWithPrice > 0 && (
+                        <div className="text-center">
+                            <p className="text-small text-default-500">Priced Skins</p>
+                            <Chip 
+                                color="secondary" 
+                                variant="flat" 
+                                size="lg"
+                                className="text-lg font-bold"
+                            >
+                                {skinsWithPrice}/{totalSkins}
                             </Chip>
                         </div>
                     )}
