@@ -9,9 +9,10 @@ import { Card, CardFooter } from "@nextui-org/card";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 import { Button } from "@nextui-org/button";
-import OptimizedAdBanner from "./optimized-ad-banner";
 import { SkinsCollectionStats } from "./skins-collection-stats";
 import { RPPriceEditor } from "./rp-price-editor";
+import { DonationBanner } from "./donation-banner";
+// import OptimizedAdBanner from "./optimized-ad-banner";
 
 
 
@@ -45,10 +46,10 @@ export function MySkinsGrid() {
     const filteredSkins = searchText.length === 0 ? skins : skins?.filter((skin: any) => skin.key.includes(championKey[0]));
 
     //delete skin from db by skinId
-            const deleteSkinOwned = useCallback(async (id:number) => {
-            await db.skins.delete(id);
-            console.warn("Skin Deleted From Collection");
-          }, [])
+    const deleteSkinOwned = useCallback(async (id: number) => {
+        await db.skins.delete(id);
+        console.warn("Skin Deleted From Collection");
+    }, [])
 
     useEffect(() => {
         fetchAllChampios();
@@ -58,12 +59,15 @@ export function MySkinsGrid() {
         <div id="container" className="w-full">
             <h1 className={title()}>My Skins</h1>
             <div className="py-5" />
-            <SkinsCollectionStats/>
+            <SkinsCollectionStats />
             <Input id="championNameInput" className="py-5 w-[auto]" type="text" label="Find Champion" placeholder="Champion Name" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
-            <OptimizedAdBanner 
-                slot={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT_MY_SKINS || ""}
-                className="py-5"
-            />
+            <div className="py-2">
+                <DonationBanner />
+                {/* <OptimizedAdBanner 
+                    slot={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT_MY_SKINS || ""}
+                    className="py-5"
+                /> */}
+            </div>
             <div id="gridContainer" className="py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {filteredSkins?.map((champion: any, index: number) => {
                     return (
@@ -90,9 +94,9 @@ export function MySkinsGrid() {
                                         skinName={champion.skinName}
                                         onPriceUpdate={(newPrice) => {
                                             // Actualizar el estado local para reflejar el cambio inmediatamente
-                                            setSkins((prevSkins: any) => 
-                                                prevSkins.map((skin: any) => 
-                                                    skin.id === champion.id 
+                                            setSkins((prevSkins: any) =>
+                                                prevSkins.map((skin: any) =>
+                                                    skin.id === champion.id
                                                         ? { ...skin, rpPrice: newPrice }
                                                         : skin
                                                 )
