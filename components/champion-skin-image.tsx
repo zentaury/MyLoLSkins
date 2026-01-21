@@ -3,13 +3,14 @@ import { db } from "@/db/IndexedDB";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 import { Card, CardFooter, CardHeader } from "@nextui-org/card";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { OwnedSkinChecker } from "./owned-skin-checker";
 import { useLiveQuery } from "dexie-react-hooks";
 import { Champion } from "@/app/interfaces/champion-interface";
 import { AddToWishlist } from "./add-to-wishlist";
 
 export function ChampionSkinImage({ championId, championKey, championName, championTitle, skinId, skinNum, skinName }: Champion) {
+    const [mounted, setMounted] = useState(false);
 
     let imageSrc = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championId}_${skinNum}.jpg`;
 
@@ -18,6 +19,10 @@ export function ChampionSkinImage({ championId, championKey, championName, champ
         () => db.skins.where('skinId').equals(skinId).first(),
         [skinId]
     );
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     //add skin to db
     const addSkinToList = useCallback(async () => {
@@ -38,20 +43,31 @@ export function ChampionSkinImage({ championId, championKey, championName, champ
         }
     }, [championId, championKey, championName, championTitle, skinId, skinNum, skinName]);
 
+    const handleCardClick = (e: React.MouseEvent) => {
+        // Solo agregar si no se clickeó en un botón o tooltip
+        const target = e.target as HTMLElement;
+        if (!target.closest('button') && !target.closest('[role="tooltip"]')) {
+            addSkinToList();
+        }
+    };
+
     return (
-        <Card isFooterBlurred isHoverable onClick={addSkinToList} className="h-[auto] w-[auto] cursor-pointer">
+        <div onClick={handleCardClick} className="cursor-pointer">
+        <Card isFooterBlurred isHoverable className="h-[auto] w-[auto]">
             <CardHeader className="absolute z-10 top-1 flex-col !items-end w-full">
                 <div className="flex flex-col gap-2 items-end">
-                    {skin && <OwnedSkinChecker />}
-                    <AddToWishlist
-                        championId={championId}
-                        championKey={championKey}
-                        championName={championName}
-                        championTitle={championTitle}
-                        skinId={skinId}
-                        skinNum={skinNum}
-                        skinName={skinName}
-                    />
+                    {mounted && skin && <OwnedSkinChecker />}
+                    {mounted && !skin && (
+                        <AddToWishlist
+                            championId={championId}
+                            championKey={championKey}
+                            championName={championName}
+                            championTitle={championTitle}
+                            skinId={skinId}
+                            skinNum={skinNum}
+                            skinName={skinName}
+                        />
+                    )}
                 </div>
             </CardHeader>
             <Image
@@ -69,5 +85,6 @@ export function ChampionSkinImage({ championId, championKey, championName, champ
                 </div>
             </CardFooter>
         </Card>
+        </div>
     );
 }

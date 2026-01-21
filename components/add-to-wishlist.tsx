@@ -13,6 +13,7 @@ interface AddToWishlistProps extends Champion {
 }
 
 export function AddToWishlist({ championId, championKey, championName, championTitle, skinId, skinNum, skinName, className }: AddToWishlistProps) {
+    const [mounted, setMounted] = useState(false);
 
     // Check if skin is in wishlist
     const inWishlist = useLiveQuery(
@@ -20,17 +21,13 @@ export function AddToWishlist({ championId, championKey, championName, championT
         [skinId]
     );
 
-    const isAdded = (inWishlist || 0) > 0;
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
-    const toggleWishlist = async (e: any) => {
-        // e is PressEvent from standard onClick but let's be safe
-        if (e && typeof e.preventDefault === 'function') {
-            e.preventDefault();
-        }
-        if (e && typeof e.stopPropagation === 'function') {
-            e.stopPropagation();
-        }
+    const isAdded = mounted && (inWishlist || 0) > 0;
 
+    const toggleWishlist = async () => {
         try {
             if (isAdded) {
                 // Find and delete
@@ -63,7 +60,7 @@ export function AddToWishlist({ championId, championKey, championName, championT
                 className={`bg-transparent text-default-400 data-[hover=true]:bg-transparent ${className}`}
                 radius="full"
                 variant="light"
-                onClick={toggleWishlist}
+                onPress={toggleWishlist}
                 aria-label={isAdded ? "Remove from wishlist" : "Add to wishlist"}
             >
                 <HeartFilledIcon className={isAdded ? "text-danger" : "text-default-400"} />
