@@ -19,8 +19,24 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: keywords,
+  authors: [{ name: "Zentaury" }],
   icons: {
     icon: "/favicon.gif",
+  },
+  openGraph: {
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: "https://mylolskins.com",
+    siteName: siteConfig.name,
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    creator: "@MyLoLSkinsApp",
   },
 };
 
@@ -41,15 +57,6 @@ export default function RootLayout({
       <head>
         {/* <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4817149381823553" crossOrigin="anonymous" strategy="lazyOnload" /> */}
         <link rel="icon" href="/favicon.gif" type="image/gif" />
-        <meta property="og:type" content="website" />
-        <meta name="description" content={siteConfig.description} />
-        <meta name="keywords" content={keywords} />
-        <meta name="author" content="Zentaury" />
-        <meta property="og:title" content={siteConfig.name} />
-        <meta property="og:description" content={siteConfig.description} />
-        <meta property="og:url" content="https://mylolskins.com" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
