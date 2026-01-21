@@ -12,6 +12,7 @@ import { Button } from "@nextui-org/button";
 import { SkinsCollectionStats } from "./skins-collection-stats";
 import { RPPriceEditor } from "./rp-price-editor";
 import { DonationBanner } from "./donation-banner";
+import { BackupManager } from "./backup-manager";
 // import OptimizedAdBanner from "./optimized-ad-banner";
 
 
@@ -70,10 +71,10 @@ export function MySkinsGrid() {
             <h1 className={title()}>My Skins</h1>
             <div className="py-5" />
             <SkinsCollectionStats />
-            <div className="flex flex-col sm:flex-row gap-4 w-full mb-4">
+            <div className="flex flex-col xl:flex-row gap-4 w-full mb-4 items-center">
                 <Input
                     id="championNameInput"
-                    className="flex-1"
+                    className="flex-1 w-full"
                     type="text"
                     label="Find Champion"
                     placeholder="Champion Name"
@@ -92,10 +93,13 @@ export function MySkinsGrid() {
                     <SelectItem key="1820" value="1820">1820 RP</SelectItem>
                     <SelectItem key="3250" value="3250">3250 RP</SelectItem>
                 </Select>
+                <div className="flex-none">
+                    <BackupManager />
+                </div>
             </div>
             <div className="py-2">
                 <DonationBanner />
-                {/* <OptimizedAdBanner 
+                {/* <OptimizedAdBanner
                     slot={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT_MY_SKINS || ""}
                     className="py-5"
                 /> */}
