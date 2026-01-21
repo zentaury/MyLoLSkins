@@ -51,8 +51,21 @@ export function ChampionSkinImage({ championId, championKey, championName, champ
         }
     };
 
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            addSkinToList();
+        }
+    };
+
     return (
-        <div onClick={handleCardClick} className="cursor-pointer">
+        <div 
+            onClick={handleCardClick} 
+            onKeyDown={handleKeyDown}
+            role="button"
+            tabIndex={0}
+            className="cursor-pointer"
+        >
         <Card isFooterBlurred isHoverable className="h-[auto] w-[auto]">
             <CardHeader className="absolute z-10 top-1 flex-col !items-end w-full">
                 <div className="flex flex-col gap-2 items-end">

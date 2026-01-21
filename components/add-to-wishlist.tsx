@@ -12,7 +12,7 @@ interface AddToWishlistProps extends Champion {
     className?: string;
 }
 
-export function AddToWishlist({ championId, championKey, championName, championTitle, skinId, skinNum, skinName, className }: AddToWishlistProps) {
+export function AddToWishlist({ championId, championKey, championName, championTitle: _championTitle, skinId, skinNum, skinName, className }: AddToWishlistProps) {
     const [mounted, setMounted] = useState(false);
 
     // Check if skin is in wishlist

@@ -2,7 +2,6 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@nextui-org/button";
-import { Card, CardBody } from "@nextui-org/card";
 import { db } from "@/db/IndexedDB";
 import { Chip } from "@nextui-org/chip";
 import { Tooltip } from "@nextui-org/tooltip";
@@ -83,6 +82,7 @@ export function BackupManager() {
 
                     if (existing === 0) {
                         // Remove the local ID to let DB assign a new one
+                        // eslint-disable-next-line @typescript-eslint/no-unused-vars
                         const { id, ...skinData } = skin;
                         await db.skins.add(skinData);
                         addedCount++;

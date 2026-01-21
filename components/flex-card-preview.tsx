@@ -1,8 +1,6 @@
 "use client";
 
 import { useMemo } from "react";
-import { Image } from "@nextui-org/image";
-import NextImage from "next/image";
 
 interface FlexCardPreviewProps {
     summonerName: string;

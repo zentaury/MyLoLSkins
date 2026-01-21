@@ -11,9 +11,9 @@ import { Navbar } from "@/components/navbar";
 import Footer from "@/components/footer";
 
 import { keywords } from "@/config/seo-keywords";
-import Script from "next/script";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mylolskins.com'),
   title: {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
@@ -57,20 +57,23 @@ export default function RootLayout({
       <head>
         {/* <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4817149381823553" crossOrigin="anonymous" strategy="lazyOnload" /> */}
         <link rel="icon" href="/favicon.gif" type="image/gif" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": siteConfig.name,
-            "url": "https://mylolskins.com",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://mylolskins.com/search?q={search_term_string}",
-              "query-input": "required name=search_term_string"
-            }
-          })}
-        </script>
-        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="Zentaury" data-description="Support me on Buy me a coffee!" data-message="Hey! You can also buy me a coffee or a skin ;)" data-color="#FF5F5F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": siteConfig.name,
+              "url": "https://mylolskins.com",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://mylolskins.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
+        <script async data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="Zentaury" data-description="Support me on Buy me a coffee!" data-message="Hey! You can also buy me a coffee or a skin ;)" data-color="#FF5F5F" data-position="Right" data-x_margin="18" data-y_margin="18" />
       </head>
       <body
         className={clsx(

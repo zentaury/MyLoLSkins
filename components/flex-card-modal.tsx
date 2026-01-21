@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@nextui-org/modal";
 import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
@@ -13,9 +13,6 @@ export function FlexCardModal() {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [summonerName, setSummonerName] = useState("");
     const [isGenerating, setIsGenerating] = useState(false);
-
-    // Stats
-    const skins = useLiveQuery(() => db.skins.toArray());
 
     // Stats Calculation
     const stats = useLiveQuery(async () => {
