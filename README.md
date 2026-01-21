@@ -81,6 +81,11 @@
 - Support development via "Buy Me a Coffee"
 - Ad-free experience
 
+### 📰 News Feed
+- Stay updated with official announcements
+- Integrated X (Twitter) timeline
+- Never miss a new feature update
+
 | Technology | Purpose |
 |------------|---------|
 | [Next.js 15](https://nextjs.org/) | React Framework (App Router) |
