@@ -13,6 +13,7 @@ import { SkinsCollectionStats } from "./skins-collection-stats";
 import { RPPriceEditor } from "./rp-price-editor";
 import { DonationBanner } from "./donation-banner";
 import { BackupManager } from "./backup-manager";
+import { FlexCardModal } from "./flex-card-modal";
 // import OptimizedAdBanner from "./optimized-ad-banner";
 
 
@@ -93,8 +94,9 @@ export function MySkinsGrid() {
                     <SelectItem key="1820" value="1820">1820 RP</SelectItem>
                     <SelectItem key="3250" value="3250">3250 RP</SelectItem>
                 </Select>
-                <div className="flex-none">
+                <div className="flex-none flex items-center gap-2">
                     <BackupManager />
+                    <FlexCardModal />
                 </div>
             </div>
             <div className="py-2">
