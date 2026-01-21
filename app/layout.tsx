@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { Metadata, Viewport,  } from "next";
+import { Metadata, Viewport, } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import clsx from "clsx";
 
@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <head>
-      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4817149381823553" crossOrigin="anonymous" strategy="lazyOnload"/>
+        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4817149381823553" crossOrigin="anonymous" strategy="lazyOnload" />
         <link rel="icon" href="/favicon.gif" type="image/gif" />
         <meta property="og:type" content="website" />
         <meta name="description" content={siteConfig.description} />
@@ -63,6 +63,7 @@ export default function RootLayout({
             }
           })}
         </script>
+        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="Zentaury" data-description="Support me on Buy me a coffee!" data-message="Hey! You can also buy me a coffee or a skin ;)" data-color="#FF5F5F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
       </head>
       <body
         className={clsx(
@@ -77,7 +78,7 @@ export default function RootLayout({
               {children}
               <SpeedInsights />
             </main>
-            <Footer/>
+            <Footer />
           </div>
         </Providers>
       </body>

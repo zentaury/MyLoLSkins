@@ -44,6 +44,6 @@ export const siteConfig = {
     // twitter: "https://twitter.com/getnextui",
     // docs: "https://nextui.org",
     // discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://paypal.me/Zentaury?country.x=SV&locale.x=es_XC",
+    sponsor: "https://buymeacoffee.com/Zentaury",
   },
 };

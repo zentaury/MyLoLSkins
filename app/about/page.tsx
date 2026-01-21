@@ -21,12 +21,12 @@ export default function AboutPage() {
         </CardHeader>
         <CardBody>
           <p className="text-default-600 leading-relaxed">
-            My LoL Skins is a web application designed for League of Legends players who want to keep track 
-            of their skin collection. Built with modern web technologies, it provides an intuitive interface 
+            My LoL Skins is a web application designed for League of Legends players who want to keep track
+            of their skin collection. Built with modern web technologies, it provides an intuitive interface
             to manage, organize, and value your digital cosmetic investments in League of Legends.
           </p>
           <p className="text-default-600 leading-relaxed mt-4">
-            Whether you&apos;re a casual player with a few favorite skins or a collector with hundreds of cosmetics, 
+            Whether you&apos;re a casual player with a few favorite skins or a collector with hundreds of cosmetics,
             My LoL Skins helps you organize your collection and understand its value.
           </p>
         </CardBody>
@@ -94,7 +94,7 @@ export default function AboutPage() {
               <div className="flex-1">
                 <h3 className="font-semibold mb-2 text-lg">Browse Champions</h3>
                 <p className="text-default-600 leading-relaxed">
-                  Start by exploring the champions page where you can search and view all League of Legends champions 
+                  Start by exploring the champions page where you can search and view all League of Legends champions
                   with their beautiful loading screen artwork.
                 </p>
               </div>
@@ -105,7 +105,7 @@ export default function AboutPage() {
               <div className="flex-1">
                 <h3 className="font-semibold mb-2 text-lg">Explore Skins</h3>
                 <p className="text-default-600 leading-relaxed">
-                  Click on any champion to view all their available skins. Each skin is displayed with high-quality 
+                  Click on any champion to view all their available skins. Each skin is displayed with high-quality
                   images and you can see which ones you already own.
                 </p>
               </div>
@@ -116,7 +116,7 @@ export default function AboutPage() {
               <div className="flex-1">
                 <h3 className="font-semibold mb-2 text-lg">Build Your Collection</h3>
                 <p className="text-default-600 leading-relaxed">
-                  Add skins to your collection by clicking on them. Your collection is saved locally in your browser 
+                  Add skins to your collection by clicking on them. Your collection is saved locally in your browser
                   and persists between sessions.
                 </p>
               </div>
@@ -127,7 +127,7 @@ export default function AboutPage() {
               <div className="flex-1">
                 <h3 className="font-semibold mb-2 text-lg">Track Value</h3>
                 <p className="text-default-600 leading-relaxed">
-                  Visit your &quot;My Skins&quot; page to add RP prices to your skins and see the total value of your collection. 
+                  Visit your &quot;My Skins&quot; page to add RP prices to your skins and see the total value of your collection.
                   Use quick-select buttons for common prices or enter custom values.
                 </p>
               </div>
@@ -144,22 +144,23 @@ export default function AboutPage() {
         </CardHeader>
         <CardBody>
           <p className="text-default-600 mb-4">
-            My LoL Skins is an open-source project created for the League of Legends community. 
-            If you enjoy using the application and would like to support its development, you can:
+            My LoL Skins is a project created for the League of Legends community.
+            If you enjoy using the application and would like to support its development,
+            you can use the floating &quot;Buy Me a Coffee&quot; button in the corner of the screen, or visit:
           </p>
           <div className="flex flex-wrap gap-4">
-            <Link 
-              href="https://paypal.me/Zentaury?country.x=SV&locale.x=es_XC" 
-              isExternal 
+            <Link
+              href="https://buymeacoffee.com/Zentaury"
+              isExternal
               className="text-primary"
             >
-              💝 Support via PayPal
+              ☕ Support via Buy Me a Coffee
             </Link>
           </div>
           <p className="text-small text-default-500 mt-6">
-            <strong>Disclaimer:</strong> My LoL Skins is not endorsed by Riot Games and does not reflect 
-            the views or opinions of Riot Games or anyone officially involved in producing or managing 
-            League of Legends. League of Legends and all associated properties are trademarks or 
+            <strong>Disclaimer:</strong> My LoL Skins is not endorsed by Riot Games and does not reflect
+            the views or opinions of Riot Games or anyone officially involved in producing or managing
+            League of Legends. League of Legends and all associated properties are trademarks or
             registered trademarks of Riot Games, Inc.
           </p>
         </CardBody>

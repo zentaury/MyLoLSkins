@@ -156,7 +156,7 @@ Contributions are welcome! Feel free to:
 
 If you enjoy using My LoL Skins and would like to support its development:
 
-[![PayPal](https://img.shields.io/badge/PayPal-Support_Me-blue?style=for-the-badge&logo=paypal)](https://paypal.me/Zentaury?country.x=SV&locale.x=es_XC)
+<a href="https://www.buymeacoffee.com/Zentaury" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
 ---
 
