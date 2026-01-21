@@ -1,14 +1,15 @@
 "use client";
 import { db } from "@/db/IndexedDB";
-import {Image} from "@nextui-org/image";
+import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
-import { Card, CardFooter, CardHeader} from "@nextui-org/card";
+import { Card, CardFooter, CardHeader } from "@nextui-org/card";
 import { useCallback } from "react";
 import { OwnedSkinChecker } from "./owned-skin-checker";
 import { useLiveQuery } from "dexie-react-hooks";
 import { Champion } from "@/app/interfaces/champion-interface";
+import { AddToWishlist } from "./add-to-wishlist";
 
-export function ChampionSkinImage({championId, championKey, championName, championTitle, skinId, skinNum, skinName}:Champion) {
+export function ChampionSkinImage({ championId, championKey, championName, championTitle, skinId, skinNum, skinName }: Champion) {
 
     let imageSrc = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championId}_${skinNum}.jpg`;
 
@@ -17,17 +18,17 @@ export function ChampionSkinImage({championId, championKey, championName, champi
         () => db.skins.where('skinId').equals(skinId).first(),
         [skinId]
     );
-    
+
     //add skin to db
     const addSkinToList = useCallback(async () => {
         try {
             const existingSkin = await db.skins.where("skinId").equals(skinId).first();
-            if(!existingSkin){
+            if (!existingSkin) {
                 await db.skins.add({
                     key: championKey,
                     name: championId,
                     title: championTitle,
-                    skinId: skinId, 
+                    skinId: skinId,
                     skinNum: Number(skinNum),
                     skinName: skinName
                 });
@@ -38,13 +39,20 @@ export function ChampionSkinImage({championId, championKey, championName, champi
     }, [championId, championKey, championName, championTitle, skinId, skinNum, skinName]);
 
     return (
-        <Card isFooterBlurred isPressable isHoverable onPress={addSkinToList} className="h-[auto] w-[auto]">
-            <CardHeader className="absolute z-10 top-1 flex-col !place-items-end">
-
-                {
-                    skin &&
-                    <OwnedSkinChecker />
-                }
+        <Card isFooterBlurred isHoverable onClick={addSkinToList} className="h-[auto] w-[auto] cursor-pointer">
+            <CardHeader className="absolute z-10 top-1 flex-col !items-end w-full">
+                <div className="flex flex-col gap-2 items-end">
+                    {skin && <OwnedSkinChecker />}
+                    <AddToWishlist
+                        championId={championId}
+                        championKey={championKey}
+                        championName={championName}
+                        championTitle={championTitle}
+                        skinId={skinId}
+                        skinNum={skinNum}
+                        skinName={skinName}
+                    />
+                </div>
             </CardHeader>
             <Image
                 isZoomed

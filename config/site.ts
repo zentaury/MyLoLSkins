@@ -13,6 +13,10 @@ export const siteConfig = {
       href: "/my-skins",
     },
     {
+      label: "Wishlist",
+      href: "/wishlist",
+    },
+    {
       label: "About",
       href: "/about",
     },
@@ -29,6 +33,10 @@ export const siteConfig = {
     {
       label: "My Skins",
       href: "/my-skins",
+    },
+    {
+      label: "Wishlist",
+      href: "/wishlist",
     },
     {
       label: "About",

@@ -12,15 +12,19 @@ export interface Skin {
 
 }
 
-export class DB extends Dexie{
+export class DB extends Dexie {
     skins!: Table<Skin>;
-    constructor(){
+    wishlist!: Table<Skin>;
+    constructor() {
         super('mylolskins');
         this.version(1).stores({
             skins: '++id,key,championName,championId,skinId,skinNum,skinName'
         });
         this.version(2).stores({
             skins: '++id,key,championName,championId,skinId,skinNum,skinName,rpPrice'
+        });
+        this.version(3).stores({
+            wishlist: '++id,key,championName,championId,skinId,skinNum,skinName,rpPrice'
         });
     }
 };
