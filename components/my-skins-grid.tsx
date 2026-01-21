@@ -16,11 +16,14 @@ import { DonationBanner } from "./donation-banner";
 
 
 
+import { Select, SelectItem } from "@nextui-org/select";
+
 export function MySkinsGrid() {
 
     const [champions, setChampions] = useState([]);
     const [skins, setSkins]: any = useState([]);
     const [searchText, setSearchText] = useState("");
+    const [priceFilter, setPriceFilter] = useState("all");
 
     const championsArrayList: any = Object.entries(champions);
 
@@ -43,7 +46,14 @@ export function MySkinsGrid() {
     championKey = filteredChampionList?.map((champion: any) => champion[1].key)
 
     //filtering skin by skin key and champion key
-    const filteredSkins = searchText.length === 0 ? skins : skins?.filter((skin: any) => skin.key.includes(championKey[0]));
+    const filteredSkins = (searchText.length === 0 ? skins : skins?.filter((skin: any) => skin.key.includes(championKey[0])))?.filter((skin: any) => {
+        if (priceFilter === "all") return true;
+        if (priceFilter === "975") return (skin.rpPrice || 0) <= 975;
+        if (priceFilter === "1350") return (skin.rpPrice || 0) === 1350;
+        if (priceFilter === "1820") return (skin.rpPrice || 0) === 1820;
+        if (priceFilter === "3250") return (skin.rpPrice || 0) >= 3250;
+        return true;
+    });
 
     //delete skin from db by skinId
     const deleteSkinOwned = useCallback(async (id: number) => {
@@ -60,7 +70,29 @@ export function MySkinsGrid() {
             <h1 className={title()}>My Skins</h1>
             <div className="py-5" />
             <SkinsCollectionStats />
-            <Input id="championNameInput" className="py-5 w-[auto]" type="text" label="Find Champion" placeholder="Champion Name" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+            <div className="flex flex-col sm:flex-row gap-4 w-full mb-4">
+                <Input
+                    id="championNameInput"
+                    className="flex-1"
+                    type="text"
+                    label="Find Champion"
+                    placeholder="Champion Name"
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                />
+                <Select
+                    label="Filter by Price"
+                    className="w-full sm:w-48"
+                    defaultSelectedKeys={["all"]}
+                    onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setPriceFilter(e.target.value)}
+                >
+                    <SelectItem key="all" value="all">All Prices</SelectItem>
+                    <SelectItem key="975" value="975">975 RP & Lower</SelectItem>
+                    <SelectItem key="1350" value="1350">1350 RP</SelectItem>
+                    <SelectItem key="1820" value="1820">1820 RP</SelectItem>
+                    <SelectItem key="3250" value="3250">3250 RP</SelectItem>
+                </Select>
+            </div>
             <div className="py-2">
                 <DonationBanner />
                 {/* <OptimizedAdBanner 

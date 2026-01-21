@@ -2,18 +2,28 @@
 
 import Link from "next/link";
 import { Card, CardHeader } from "@nextui-org/card";
-import {Image} from "@nextui-org/image";
+import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
+import { Chip } from "@nextui-org/chip";
 import { ChampionCardProps } from "@/app/interfaces/champion-card-interface";
 
-export function ChampionCard({ championKey, name, title, skinNumber }: ChampionCardProps) {
+export function ChampionCard({ championKey, name, title, skinNumber, ownedCount }: ChampionCardProps) {
 
     return (
         <Link href={championKey}>
             <Card isPressable isHoverable onPress={() => { }} className="border-none" radius="lg">
                 <CardHeader className="absolute z-10 top-1 flex-col !items-start">
-                    <p className="text-tiny text-white/60 uppercase font-bold">{title}</p>
-                    <h4 className="text-white font-medium text-large">{name}</h4>
+                    <div className="flex w-full justify-between items-start">
+                        <div>
+                            <p className="text-tiny text-white/60 uppercase font-bold">{title}</p>
+                            <h4 className="text-white font-medium text-large">{name}</h4>
+                        </div>
+                        {ownedCount !== undefined && ownedCount > 0 && (
+                            <Chip size="sm" color="warning" variant="solid" className="text-tiny font-bold">
+                                {ownedCount} OWNED
+                            </Chip>
+                        )}
+                    </div>
                 </CardHeader>
                 <Image
                     isZoomed
