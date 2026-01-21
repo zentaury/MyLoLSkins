@@ -78,6 +78,25 @@ export default function AboutPage() {
                 <li>• Total RP value of collection</li>
               </ul>
             </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-3 text-pink-500">💕 Wishlist</h3>
+              <ul className="space-y-2 text-default-600">
+                <li>• Save skins you plan to buy</li>
+                <li>• Dedicated Wishlist gallery</li>
+                <li>• Separate from owned collection</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-3 text-purple-500">📸 Flex Card & Backup</h3>
+              <ul className="space-y-2 text-default-600">
+                <li>• Generate social share cards</li>
+                <li>• Export/Import collection backups</li>
+                <li>• Secure local storage management</li>
+              </ul>
+            </div>
+
           </div>
         </CardBody>
       </Card>

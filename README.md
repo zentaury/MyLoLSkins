@@ -56,6 +56,31 @@
 
 ## 🛠️ Tech Stack
 
+### 💕 Wishlist
+- Save skins you want to acquire to a dedicated list
+- Toggle skins with a simple heart icon
+- View your wishlist in a separate gallery
+
+### 📸 Flex Card (Social Share)
+- Generate a beautiful card with your collection stats
+- Customize with your Summoner Name
+- Features your "Crown Jewel" (most expensive skin) as the background
+- Download and share on social media
+
+### 💾 Backup & Restore
+- Export your entire collection to a JSON file
+- Import and merge collections easily
+- Never lose your data
+
+### 🔍 Advanced Filtering
+- Filter champions by "Owned" status
+- Filter skins by RP Price tiers
+
+### 💰 Donation System & RP Tracking
+- Set RP prices and track total collection value
+- Support development via "Buy Me a Coffee"
+- Ad-free experience
+
 | Technology | Purpose |
 |------------|---------|
 | [Next.js 15](https://nextjs.org/) | React Framework (App Router) |
