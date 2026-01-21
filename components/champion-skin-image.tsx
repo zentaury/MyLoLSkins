@@ -8,6 +8,8 @@ import { OwnedSkinChecker } from "./owned-skin-checker";
 import { useLiveQuery } from "dexie-react-hooks";
 import { Champion } from "@/app/interfaces/champion-interface";
 import { AddToWishlist } from "./add-to-wishlist";
+import { getSkinRarityData } from "@/app/api/dataDragonAPI";
+import { estimateSkinPrice } from "@/utils/skinPricing";
 
 export function ChampionSkinImage({ championId, championKey, championName, championTitle, skinId, skinNum, skinName }: Champion) {
     const [mounted, setMounted] = useState(false);
@@ -29,13 +31,24 @@ export function ChampionSkinImage({ championId, championKey, championName, champ
         try {
             const existingSkin = await db.skins.where("skinId").equals(skinId).first();
             if (!existingSkin) {
+                // Get rarity data from Community Dragon
+                const rarityData = await getSkinRarityData(skinId);
+                
+                // Calculate automatic price based on rarity
+                const isBase = Number(skinNum) === 0;
+                const rarity = rarityData?.rarity;
+                const autoPrice = estimateSkinPrice(rarity, isBase);
+                
                 await db.skins.add({
                     key: championKey,
                     name: championId,
                     title: championTitle,
                     skinId: skinId,
                     skinNum: Number(skinNum),
-                    skinName: skinName
+                    skinName: skinName,
+                    rarity: rarity,
+                    isBase: isBase,
+                    rpPrice: autoPrice // Will be undefined for kNoRarity skins
                 });
             }
         } catch (error) {

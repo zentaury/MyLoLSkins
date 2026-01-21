@@ -8,8 +8,9 @@ export interface Skin {
     skinId: string,
     skinNum: number,
     skinName: string,
-    rpPrice?: number
-
+    rpPrice?: number,
+    rarity?: string,        // Community Dragon rarity (kEpic, kLegendary, etc.)
+    isBase?: boolean        // True if it's the default skin
 }
 
 export class DB extends Dexie {
@@ -25,6 +26,10 @@ export class DB extends Dexie {
         });
         this.version(3).stores({
             wishlist: '++id,key,championName,championId,skinId,skinNum,skinName,rpPrice'
+        });
+        this.version(4).stores({
+            skins: '++id,key,championName,championId,skinId,skinNum,skinName,rpPrice,rarity,isBase',
+            wishlist: '++id,key,championName,championId,skinId,skinNum,skinName,rpPrice,rarity,isBase'
         });
     }
 };

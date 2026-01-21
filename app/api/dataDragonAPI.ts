@@ -39,3 +39,46 @@ export async function getChampionData(championName: string) {
   const data = await response.json();
   return data;
 }
+
+// Community Dragon API for skin rarity data
+let cachedCommunityDragonSkins: any = null;
+let cdCacheTimestamp: number = 0;
+
+async function getCommunityDragonSkins() {
+  const now = Date.now();
+  
+  // Cache for 24 hours
+  if (cachedCommunityDragonSkins !== null && (now - cdCacheTimestamp) < CACHE_DURATION) {
+    return cachedCommunityDragonSkins;
+  }
+  
+  try {
+    const response = await fetch('https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/skins.json');
+    const data = await response.json();
+    cachedCommunityDragonSkins = data;
+    cdCacheTimestamp = now;
+    console.log(`Community Dragon skins data updated at ${new Date(now).toISOString()}`);
+    return data;
+  } catch (error) {
+    console.error('Failed to fetch Community Dragon data:', error);
+    return null;
+  }
+}
+
+export async function getSkinRarityData(skinId: string) {
+  const data = await getCommunityDragonSkins();
+  if (!data) return null;
+  
+  // Community Dragon uses skinId as object keys
+  const skinData = data[skinId];
+  
+  if (skinData) {
+    return {
+      rarity: skinData.rarity,
+      isBase: skinData.isBase || false,
+      isLegacy: skinData.isLegacy || false
+    };
+  }
+  
+  return null;
+}
