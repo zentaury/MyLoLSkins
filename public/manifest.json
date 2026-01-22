@@ -1,0 +1,23 @@
+{
+  "name": "My LoL Skins - League of Legends Skin Tracker",
+  "short_name": "My LoL Skins",
+  "description": "Track your League of Legends skin collection, create wishlists, and manage your RP spending",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["games", "entertainment", "utilities"]
+}
