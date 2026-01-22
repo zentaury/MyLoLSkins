@@ -94,13 +94,15 @@ export default async function ChampionPage({ params }: PageProps) {
             </Card>
             <div className="py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
                 {skins.map((skin: any) => {
+                    // Community Dragon uses championKey + skinNum format (e.g., "103015" for Ahri skin 15)
+                    const communityDragonSkinId = `${champion.key}${String(skin.num).padStart(3, '0')}`;
                     return <ChampionSkinImage
                         key={"Skin" + skin.id}
                         championId={champion.id}
                         championKey={champion.key}
                         championName={champion.name}
                         championTitle={champion.title}
-                        skinId={skin.id}
+                        skinId={communityDragonSkinId}
                         skinName={skin.name}
                         skinNum={skin.num}
                     />

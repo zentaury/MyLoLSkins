@@ -62,10 +62,11 @@ export default function AboutPage() {
             <div>
               <h3 className="text-lg font-semibold mb-3 text-success">💰 RP Value Tracking</h3>
               <ul className="space-y-2 text-default-600">
-                <li>• Manually set RP prices for your skins</li>
+                <li>• Automatic RP pricing based on skin rarity</li>
+                <li>• Manually set custom RP prices</li>
                 <li>• Quick-select common RP values</li>
                 <li>• Calculate total collection value</li>
-                <li>• Track investment in your collection</li>
+                <li>• Auto-Assign RP Prices tool</li>
               </ul>
             </div>
 
@@ -89,11 +90,13 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold mb-3 text-purple-500">📸 Flex Card & Backup</h3>
+              <h3 className="text-lg font-semibold mb-3 text-purple-500">⚙️ Collection Management</h3>
               <ul className="space-y-2 text-default-600">
-                <li>• Generate social share cards</li>
+                <li>• Options menu with 4 powerful tools</li>
+                <li>• Auto-Assign RP Prices based on rarity</li>
                 <li>• Export/Import collection backups</li>
-                <li>• Secure local storage management</li>
+                <li>• Generate and share flex cards</li>
+                <li>• All accessible from My Skins page</li>
               </ul>
             </div>
 
@@ -148,6 +151,18 @@ export default function AboutPage() {
                 <p className="text-default-600 leading-relaxed">
                   Visit your &quot;My Skins&quot; page to add RP prices to your skins and see the total value of your collection.
                   Use quick-select buttons for common prices or enter custom values.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <Chip color="danger" variant="flat" className="mt-1 min-h-[44px] flex items-center">5</Chip>
+              <div className="flex-1">
+                <h3 className="font-semibold mb-2 text-lg">Manage Your Collection</h3>
+                <p className="text-default-600 leading-relaxed">
+                  Use the &quot;Options&quot; dropdown menu in My Skins to access powerful tools: Auto-Assign RP Prices 
+                  based on skin rarity, Export/Import your collection for backup, or Share your collection with a 
+                  beautiful flex card on social media.
                 </p>
               </div>
             </div>

@@ -12,11 +12,8 @@ import { Button } from "@nextui-org/button";
 import { SkinsCollectionStats } from "./skins-collection-stats";
 import { RPPriceEditor } from "./rp-price-editor";
 import { DonationBanner } from "./donation-banner";
-import { BackupManager } from "./backup-manager";
-import { FlexCardModal } from "./flex-card-modal";
+import { OptionsDropdown } from "./options-dropdown";
 // import OptimizedAdBanner from "./optimized-ad-banner";
-
-
 
 import { Select, SelectItem } from "@nextui-org/select";
 
@@ -94,10 +91,7 @@ export function MySkinsGrid() {
                     <SelectItem key="1820" value="1820">1820 RP</SelectItem>
                     <SelectItem key="3250" value="3250">3250 RP</SelectItem>
                 </Select>
-                <div className="flex-none flex items-center gap-2">
-                    <BackupManager />
-                    <FlexCardModal />
-                </div>
+                <OptionsDropdown />
             </div>
             <div className="py-2">
                 <DonationBanner />

@@ -37,9 +37,11 @@
 - Remove skins from your collection easily
 
 ### 💰 RP Value Tracking
-- Set RP prices for each skin in your collection
+- **Automatic RP pricing** based on skin rarity from Community Dragon API
+- Set custom RP prices for each skin in your collection
 - Quick-select buttons for common RP values (520, 750, 975, 1350, 1820, 3250)
 - Calculate the total value of your entire collection
+- **Auto-Assign RP Prices** tool to automatically price all skins based on rarity
 
 ### 📊 Collection Statistics
 - Total skins owned
@@ -67,10 +69,12 @@
 - Features your "Crown Jewel" (most expensive skin) as the background
 - Download and share on social media
 
-### 💾 Backup & Restore
-- Export your entire collection to a JSON file
-- Import and merge collections easily
-- Never lose your data
+### 💾 Collection Management (Options Menu)
+- **Auto-Assign RP Prices**: Automatically assign RP prices to all skins based on their rarity
+- **Export Collection**: Download your entire collection as a JSON backup file
+- **Import Collection**: Restore or merge collections from backup files
+- **Share Collection**: Generate and download a beautiful flex card with your collection stats
+- All tools accessible from a convenient dropdown menu in My Skins page
 
 ### 🔍 Advanced Filtering
 - Filter champions by "Owned" status

@@ -4,5 +4,5 @@ export default function MySkinsPage() {
 
   return (
       <MySkinsGrid key={"GridMySkins"}/>
-);
+  );
 }
