@@ -54,7 +54,7 @@ export function PriceMigrationTool() {
                             <ul className="text-sm text-default-600 space-y-1 list-disc list-inside">
                                 <li>Fetches rarity data for all your skins</li>
                                 <li>Automatically assigns RP prices based on rarity</li>
-                                <li>Preserves any prices you've manually set</li>
+                                <li>Preserves any prices you&apos;ve manually set</li>
                                 <li>Updates both collection and wishlist</li>
                             </ul>
                         </div>
