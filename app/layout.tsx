@@ -9,7 +9,6 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 import Footer from "@/components/footer";
-import GoogleAnalytics from "@/components/google-analytics";
 
 import { keywords } from "@/config/seo-keywords";
 
@@ -75,6 +74,19 @@ export default function RootLayout({
           }}
         />
         <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="Zentaury" data-description="Support me on Buy me a coffee!" data-message="Hey! You can also buy me a coffee or a skin ;)" data-color="#40DCA5" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+        
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-C7Z0FHXQQY"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-C7Z0FHXQQY');
+            `,
+          }}
+        />
       </head>
       <body
         className={clsx(
@@ -82,9 +94,6 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
-        )}
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">
             <Navbar />
