@@ -29,13 +29,6 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
     title: siteConfig.name,
   },
-  icons: {
-    icon: [
-      { url: "/favicon.gif", type: "image/gif" },
-      { url: "/favicon.ico", sizes: "any" },
-    ],
-    apple: "/favicon.ico",
-  },
   openGraph: {
     title: siteConfig.name,
     description: siteConfig.description,
@@ -69,6 +62,7 @@ export default function RootLayout({
       <head>
         {/* mobile-web-app-capable has no Next.js Metadata API equivalent */}
         <meta name="mobile-web-app-capable" content="yes" />
+        <link rel="icon" href="/favicon.gif" type="image/gif" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
