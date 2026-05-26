@@ -13,8 +13,9 @@ import { estimateSkinPrice } from "@/utils/skinPricing";
 
 export function ChampionSkinImage({ championId, championKey, championName, championTitle, skinId, skinNum, skinName }: Champion) {
     const [mounted, setMounted] = useState(false);
-
-    let imageSrc = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championId}_${skinNum}.jpg`;
+    const [imgSrc, setImgSrc] = useState(
+        `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championId}_${skinNum}.jpg`
+    );
 
     // Usar useLiveQuery directamente sin useState adicional
     const skin = useLiveQuery(
@@ -100,10 +101,11 @@ export function ChampionSkinImage({ championId, championKey, championName, champ
                 isZoomed
                 as={NextImage}
                 className="z-0 w-full h-full object-cover"
-                src={imageSrc}
+                src={imgSrc}
                 alt={`Picture of ${championName}`}
                 width={process.env.NEXT_PUBLIC_CARD_WIDTH}
                 height={process.env.NEXT_PUBLIC_CARD_HEIGHT}
+                onError={() => setImgSrc(`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championId}_0.jpg`)}
             />
             <CardFooter className="absolute bg-black/40 bottom-0 justify-between p-2 sm:p-3">
                 <div className="w-full">

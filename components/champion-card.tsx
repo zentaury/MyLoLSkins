@@ -7,19 +7,15 @@ import NextImage from "next/image";
 import { Chip } from "@nextui-org/chip";
 import { ChampionCardProps } from "@/app/interfaces/champion-card-interface";
 
-export function ChampionCard({ championKey, name, title, skinNumber, ownedCount }: ChampionCardProps) {
+export function ChampionCard({ championKey, name, title, skinNumber, ownedCount, priority = false }: ChampionCardProps) {
     const router = useRouter();
 
-    const handlePress = () => {
-        router.push(`/${championKey}`);
-    };
-
     return (
-        <Card 
-            isPressable 
-            isHoverable 
-            onPress={handlePress}
-            className="border-none cursor-pointer overflow-hidden" 
+        <Card
+            isPressable
+            isHoverable
+            onPress={() => router.push(`/${championKey}`)}
+            className="border-none cursor-pointer overflow-hidden"
             radius="lg"
         >
             <CardHeader className="absolute z-10 top-1 flex-col !items-start w-full">
@@ -36,7 +32,7 @@ export function ChampionCard({ championKey, name, title, skinNumber, ownedCount 
             <Image
                 isZoomed
                 as={NextImage}
-                priority={true}
+                priority={priority}
                 alt={`${name} - ${title}`}
                 className="z-0 w-full h-full object-cover"
                 classNames={{

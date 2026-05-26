@@ -4,4 +4,5 @@ export interface ChampionCardProps {
     title: string
     skinNumber: number
     ownedCount?: number
+    priority?: boolean
 }

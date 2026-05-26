@@ -11,11 +11,29 @@ import NextImage from "next/image";
 import { Button } from "@nextui-org/button";
 import { SkinsCollectionStats } from "./skins-collection-stats";
 import { RPPriceEditor } from "./rp-price-editor";
-import { DonationBanner } from "./donation-banner";
 import { OptionsDropdown } from "./options-dropdown";
 // import OptimizedAdBanner from "./optimized-ad-banner";
 
 import { Select, SelectItem } from "@nextui-org/select";
+
+function SkinCardImage({ name, skinNum }: { name: string; skinNum: number }) {
+    const [src, setSrc] = useState(
+        `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${name}_${skinNum}.jpg`
+    );
+    return (
+        <Image
+            isZoomed
+            as={NextImage}
+            priority={true}
+            className="z-0 w-full h-full object-cover"
+            src={src}
+            alt={`Picture of ${name}`}
+            width={process.env.NEXT_PUBLIC_CARD_WIDTH}
+            height={process.env.NEXT_PUBLIC_CARD_HEIGHT}
+            onError={() => setSrc(`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${name}_0.jpg`)}
+        />
+    );
+}
 
 export function MySkinsGrid() {
 
@@ -70,6 +88,14 @@ export function MySkinsGrid() {
             <div className="py-5" />
             <SkinsCollectionStats />
             <div className="flex flex-col xl:flex-row gap-4 w-full mb-4 items-center">
+                <Button
+                    color="warning"
+                    variant="flat"
+                    className="flex-shrink-0"
+                    onPress={() => (document.getElementById("bmc-wbtn") as HTMLElement | null)?.click()}
+                >
+                    ☕ Support
+                </Button>
                 <Input
                     id="championNameInput"
                     className="flex-1 w-full"
@@ -93,27 +119,11 @@ export function MySkinsGrid() {
                 </Select>
                 <OptionsDropdown />
             </div>
-            <div className="py-2">
-                <DonationBanner />
-                {/* <OptimizedAdBanner
-                    slot={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT_MY_SKINS || ""}
-                    className="py-5"
-                /> */}
-            </div>
             <div id="gridContainer" className="py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {filteredSkins?.map((champion: any, index: number) => {
                     return (
                         <Card id="mySkinsCard" key={index} isFooterBlurred isHoverable className="h-[auto] w-[auto]">
-                            <Image
-                                isZoomed
-                                as={NextImage}
-                                priority={true}
-                                className="z-0 w-full h-full object-cover"
-                                src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.name}_${champion.skinNum}.jpg`}
-                                alt={`Picture of ${champion.name}`}
-                                width={process.env.NEXT_PUBLIC_CARD_WIDTH}
-                                height={process.env.NEXT_PUBLIC_CARD_HEIGHT}
-                            />
+                            <SkinCardImage name={champion.name} skinNum={champion.skinNum} />
                             <CardFooter className="absolute bg-black/40 bottom-0 flex-col gap-2">
                                 <div className="w-full flex justify-between items-center">
                                     <h4 className="text-white font-semibold text-large">{champion.skinName}</h4>

@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport, } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Script from "next/script"
 import clsx from "clsx";
 
 import { Providers } from "./providers";
@@ -9,6 +10,7 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 import Footer from "@/components/footer";
+import GoogleAnalytics from "@/components/google-analytics";
 
 import { keywords } from "@/config/seo-keywords";
 
@@ -21,8 +23,18 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: keywords,
   authors: [{ name: "Zentaury" }],
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: siteConfig.name,
+  },
   icons: {
-    icon: "/favicon.gif",
+    icon: [
+      { url: "/favicon.gif", type: "image/gif" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/favicon.ico",
   },
   openGraph: {
     title: siteConfig.name,
@@ -55,18 +67,9 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <head>
-        {/* PWA Configuration */}
-        <link rel="manifest" href="/manifest.json" />
+        {/* mobile-web-app-capable has no Next.js Metadata API equivalent */}
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="My LoL Skins" />
-        
-        {/* Icons */}
-        <link rel="icon" href="/favicon.gif" type="image/gif" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
-        <script 
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -80,20 +83,6 @@ export default function RootLayout({
                 "query-input": "required name=search_term_string"
               }
             })
-          }}
-        />
-        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="Zentaury" data-description="Support me on Buy me a coffee!" data-message="Hey! You can also buy me a coffee or a skin ;)" data-color="#40DCA5" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
-        
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-C7Z0FHXQQY"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-C7Z0FHXQQY');
-            `,
           }}
         />
       </head>
@@ -113,6 +102,22 @@ export default function RootLayout({
             <Footer />
           </div>
         </Providers>
+        <Script
+          strategy="afterInteractive"
+          src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+          data-name="BMC-Widget"
+          data-cfasync="false"
+          data-id="Zentaury"
+          data-description="Support me on Buy me a coffee!"
+          data-message="Hey! You can also buy me a coffee or a skin ;)"
+          data-color="#40DCA5"
+          data-position="Right"
+          data-x_margin="18"
+          data-y_margin="18"
+        />
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        )}
       </body>
     </html>
   );
