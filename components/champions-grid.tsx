@@ -1,8 +1,8 @@
 "use client";
 
 import { Input } from "@nextui-org/input";
+import { Button } from "@nextui-org/button";
 import { ChampionCard } from "./champion-card";
-import { DonationBanner } from "./donation-banner";
 // import OptimizedAdBanner from "./optimized-ad-banner";
 import { title } from "./primitives";
 import { useEffect, useState } from "react";
@@ -68,6 +68,14 @@ export function ChampionsGrid({ championsList }: ChampionsGridProps) {
                 <br />
                 <br />
                 <div className="flex flex-col sm:flex-row gap-4 w-full mb-4">
+                    <Button
+                        color="warning"
+                        variant="flat"
+                        className="flex-shrink-0"
+                        onPress={() => (document.getElementById("bmc-wbtn") as HTMLElement | null)?.click()}
+                    >
+                        ☕ Support
+                    </Button>
                     <Input
                         id="championNameInput"
                         className="flex-1"
@@ -91,16 +99,9 @@ export function ChampionsGrid({ championsList }: ChampionsGridProps) {
                         </SelectItem>
                     </Select>
                 </div>
-                <div className="py-2">
-                    <DonationBanner />
-                    {/* <OptimizedAdBanner 
-                        slot={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT_HOME || ""}
-                        className="py-4"
-                    /> */}
-                </div>
             </div>
             <div className="py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {filteredChampionList.map((champion: any) => {
+                {filteredChampionList.map((champion: any, index: number) => {
                     const ownedCount = skinsByChampion[champion[1].name] || 0;
                     return (
                         <ChampionCard
@@ -110,6 +111,7 @@ export function ChampionsGrid({ championsList }: ChampionsGridProps) {
                             title={champion[1].title}
                             skinNumber={0}
                             ownedCount={ownedCount}
+                            priority={index < 8}
                         />
                     );
                 })}
