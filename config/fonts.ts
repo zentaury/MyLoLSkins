@@ -1,11 +1,12 @@
-import { Fira_Code as FontMono, Inter as FontSans } from "next/font/google";
+import { Syne, DM_Sans } from "next/font/google";
 
-export const fontSans = FontSans({
+export const fontDisplay = Syne({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-display",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-export const fontMono = FontMono({
+export const fontSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-sans",
 });

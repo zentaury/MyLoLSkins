@@ -213,3 +213,30 @@ export const NextUILogo: React.FC<IconSvgProps> = (props) => {
     </svg>
   );
 };
+
+export const HexLogo: React.FC<IconSvgProps> = ({
+  size = 28,
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    fill="none"
+    height={size || height}
+    width={size || width}
+    viewBox="0 0 28 32"
+    {...props}
+  >
+    <path
+      d="M14 1L27 8V24L14 31L1 24V8L14 1Z"
+      stroke="#C89B3C"
+      strokeWidth="1.5"
+      fill="rgba(200,155,60,0.08)"
+    />
+    <path
+      d="M14 8L21 12V20L14 24L7 20V12L14 8Z"
+      fill="#C89B3C"
+      fillOpacity="0.9"
+    />
+  </svg>
+);
