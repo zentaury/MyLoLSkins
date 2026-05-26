@@ -72,7 +72,11 @@ export function ChampionsGrid({ championsList }: ChampionsGridProps) {
                         color="warning"
                         variant="flat"
                         className="flex-shrink-0"
-                        onPress={() => (document.getElementById("bmc-wbtn") as HTMLElement | null)?.click()}
+                        onPress={() => {
+                            const btn = document.getElementById("bmc-wbtn") as HTMLElement | null;
+                            if (btn) btn.click();
+                            else window.open("https://www.buymeacoffee.com/Zentaury", "_blank");
+                        }}
                     >
                         ☕ Support
                     </Button>
