@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 // Image metadata
-export const alt = 'My LoL Skins - Managed Your League of Legends Collection';
+export const alt = 'My LoL Skins - League of Legends skin tracker';
 export const size = {
     width: 1200,
     height: 630,
@@ -16,7 +16,7 @@ export default async function Image() {
             // ImageResponse JSX element
             <div
                 style={{
-                    background: 'linear-gradient(to bottom right, #000428, #004e92)',
+                    background: '#000000',
                     width: '100%',
                     height: '100%',
                     display: 'flex',
@@ -26,19 +26,6 @@ export default async function Image() {
                     fontFamily: 'sans-serif',
                 }}
             >
-                <div
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: '20px'
-                    }}
-                >
-                    {/* Simple Icon Representation (Heart/Collection) */}
-                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" fill="#ff0055" />
-                    </svg>
-                </div>
                 <div
                     style={{
                         fontSize: 90,
@@ -52,13 +39,22 @@ export default async function Image() {
                 </div>
                 <div
                     style={{
-                        fontSize: 40,
-                        color: '#cbd5e1',
+                        fontSize: 44,
+                        color: '#C89B3C',
+                        marginBottom: 20,
                         textAlign: 'center',
-                        maxWidth: '800px',
                     }}
                 >
-                    Track Collection • Wishlist • Share Stats
+                    League of Legends skin tracker
+                </div>
+                <div
+                    style={{
+                        fontSize: 32,
+                        color: '#94a3b8',
+                        textAlign: 'center',
+                    }}
+                >
+                    Collection • Wishlist • RP value
                 </div>
             </div>
         ),

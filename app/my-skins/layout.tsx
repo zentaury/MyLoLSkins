@@ -1,3 +1,10 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "My Skins",
+  robots: { index: false, follow: true },
+};
+
 export default function MySkinsLayout({
   children,
 }: {

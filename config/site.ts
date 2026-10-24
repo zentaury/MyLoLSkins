@@ -2,7 +2,9 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "My LoL Skins",
-  description: "Manage Your League Of Legends Skins",
+  title: "My LoL Skins - League of Legends Skin Tracker",
+  url: "https://www.mylolskins.com",
+  description: "Free League of Legends skin tracker. Browse every champion's skins, mark those you own, build a wishlist and see your collection's RP value. No account needed.",
   navItems: [
     {
       label: "Champions",

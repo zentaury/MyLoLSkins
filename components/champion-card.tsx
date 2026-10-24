@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import NextLink from "next/link";
 import { Card, CardHeader } from "@heroui/card";
 import { Image } from "@heroui/image";
 import NextImage from "next/image";
@@ -9,14 +9,17 @@ import clsx from "clsx";
 import { ChampionCardProps } from "@/app/interfaces/champion-card-interface";
 
 export function ChampionCard({ championKey, name, title, skinNumber, ownedCount, priority = false }: ChampionCardProps) {
-    const router = useRouter();
     const isOwned = ownedCount !== undefined && ownedCount > 0;
 
     return (
+        // prefetch off: ~170 cards would prefetch every champion page while the grid scrolls
+        <NextLink
+            href={`/${championKey}`}
+            prefetch={false}
+            className="block rounded-large focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+        >
         <Card
-            isPressable
             isHoverable
-            onPress={() => router.push(`/${championKey}`)}
             className={clsx(
                 "border-none cursor-pointer overflow-hidden transition-all duration-300",
                 isOwned && [
@@ -56,5 +59,6 @@ export function ChampionCard({ championKey, name, title, skinNumber, ownedCount,
                 height={process.env.NEXT_PUBLIC_CARD_HEIGHT}
             />
         </Card>
+        </NextLink>
     );
 }

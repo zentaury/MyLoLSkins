@@ -36,6 +36,8 @@ export async function getAllChampionsList() {
 export async function getChampionData(championName: string) {
   const DATA_DRAGON_API = await getDataDragonApiUrl();
   const response = await fetch(`${DATA_DRAGON_API}/champion/${championName}.json`);
+  // Data Dragon answers 403 with an XML body when it has no file for the champion; throwing lets ISR keep serving the last good page
+  if (!response.ok) throw new Error(`Data Dragon ${response.status} for ${championName}`);
   const data = await response.json();
   return data;
 }

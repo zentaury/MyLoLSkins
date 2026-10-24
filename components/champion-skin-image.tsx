@@ -99,7 +99,7 @@ export function ChampionSkinImage({ championId, championKey, championName, champ
                 as={NextImage}
                 className="z-0 w-full h-full object-cover"
                 src={imgSrc}
-                alt={`Picture of ${championName}`}
+                alt={skinName}
                 width={process.env.NEXT_PUBLIC_CARD_WIDTH}
                 height={process.env.NEXT_PUBLIC_CARD_HEIGHT}
                 onError={() => setImgSrc(`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championId}_0.jpg`)}

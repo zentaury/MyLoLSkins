@@ -12,16 +12,13 @@ import { Navbar } from "@/components/navbar";
 import Footer from "@/components/footer";
 import GoogleAnalytics from "@/components/google-analytics";
 
-import { keywords } from "@/config/seo-keywords";
-
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mylolskins.com'),
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.name,
+    default: siteConfig.title,
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: keywords,
   authors: [{ name: "Zentaury" }],
   manifest: "/manifest.json",
   appleWebApp: {
@@ -30,16 +27,16 @@ export const metadata: Metadata = {
     title: siteConfig.name,
   },
   openGraph: {
-    title: siteConfig.name,
+    title: siteConfig.title,
     description: siteConfig.description,
-    url: "https://mylolskins.com",
+    // no og:url here: openGraph is inherited whole, so every page would announce the home URL against its own canonical
     siteName: siteConfig.name,
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
+    title: siteConfig.title,
     description: siteConfig.description,
     creator: "@MyLoLSkinsApp",
   },
@@ -68,14 +65,23 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": siteConfig.name,
-              "url": "https://mylolskins.com",
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://mylolskins.com/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "name": siteConfig.name,
+                  "url": siteConfig.url,
+                },
+                {
+                  "@type": "WebApplication",
+                  "name": siteConfig.name,
+                  "url": siteConfig.url,
+                  "description": siteConfig.description,
+                  "applicationCategory": "GameApplication",
+                  "operatingSystem": "Any",
+                  "inLanguage": "en",
+                  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+                },
+              ],
             })
           }}
         />
