@@ -3,7 +3,7 @@ import { FlatCompat } from "@eslint/eslintrc";
 // shortcut: FlatCompat bridges eslint-config-next 15 (legacy format only), drop it once on a flat-native eslint-config-next (16+)
 const compat = new FlatCompat({ baseDirectory: import.meta.dirname });
 
-export default [
+const config = [
   {
     ignores: [
       "**/.next/",
@@ -70,3 +70,5 @@ export default [
     },
   }),
 ];
+
+export default config;
