@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Button } from "@nextui-org/button";
+import { Button } from "@heroui/button";
 import { db } from "@/db/IndexedDB";
-import { Chip } from "@nextui-org/chip";
-import { Tooltip } from "@nextui-org/tooltip";
+import { Chip } from "@heroui/chip";
+import { Tooltip } from "@heroui/tooltip";
 
 export function BackupManager() {
     const [isExporting, setIsExporting] = useState(false);

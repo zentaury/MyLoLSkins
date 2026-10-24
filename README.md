@@ -95,8 +95,8 @@
 | [Next.js 15](https://nextjs.org/) | React Framework (App Router) |
 | [React 19](https://react.dev/) | User Interface |
 | [TypeScript](https://www.typescriptlang.org/) | Type Safety |
-| [NextUI v2](https://nextui.org/) | UI Components |
-| [TailwindCSS](https://tailwindcss.com/) | Styling |
+| [HeroUI](https://www.heroui.com/) | UI Components |
+| [TailwindCSS v4](https://tailwindcss.com/) | Styling |
 | [Dexie.js](https://dexie.org/) | IndexedDB Wrapper (Local Storage) |
 | [Framer Motion](https://www.framer.com/motion/) | Animations |
 | [Riot Data Dragon API](https://developer.riotgames.com/docs/lol#data-dragon) | Champion & Skin Data |

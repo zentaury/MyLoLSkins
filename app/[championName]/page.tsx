@@ -10,7 +10,7 @@ interface PageProps {
 }
 
 import Image from "next/image";
-import { Card, CardHeader } from "@nextui-org/card";
+import { Card, CardHeader } from "@heroui/card";
 
 import { Metadata } from "next";
 
@@ -72,7 +72,7 @@ export default async function ChampionPage({ params }: PageProps) {
                 </Link>
             </div>
             <Card isPressable={false} className="">
-                <CardHeader className="absolute z-10 top-1 flex-col !items-start justify-start p-4 sm:p-6">
+                <CardHeader className="absolute z-10 top-1 flex-col items-start! justify-start p-4 sm:p-6">
                     <h2 className="text-white/60 text-lg sm:text-2xl md:text-3xl lg:text-4xl capitalize font-bold">{champion.title}</h2>
                     <h1 className="text-white text-2xl sm:text-4xl md:text-5xl lg:text-7xl capitalize font-bold">{champion.name}</h1>
                     <h3 className="text-white text-sm sm:text-lg md:text-2xl lg:text-3xl capitalize font-medium"><ChampionSkinsCount championKey={champion.key} />\{skins.length} Skins</h3>
@@ -89,7 +89,7 @@ export default async function ChampionPage({ params }: PageProps) {
                             width={1215}
                             height={717}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-t from-black to-transparent" />
                     </div>
                 </div>
             </Card>

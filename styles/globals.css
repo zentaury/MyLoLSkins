@@ -1,6 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "./hero.mjs";
+@source "../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
+@custom-variant dark (&:is(.dark *));
+
+/* inline: next/font defines these variables on <body>, so they must resolve where the utility is used, not on :root */
+@theme inline {
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-syne);
+}
 
 @layer base {
   :root {

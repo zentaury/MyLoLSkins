@@ -1,8 +1,8 @@
 "use client";
 import { db } from "@/db/IndexedDB";
-import { Image } from "@nextui-org/image";
+import { Image } from "@heroui/image";
 import NextImage from "next/image";
-import { Card, CardFooter, CardHeader } from "@nextui-org/card";
+import { Card, CardFooter, CardHeader } from "@heroui/card";
 import { useCallback, useEffect, useState } from "react";
 import { OwnedSkinChecker } from "./owned-skin-checker";
 import { useLiveQuery } from "dexie-react-hooks";
@@ -81,7 +81,7 @@ export function ChampionSkinImage({ championId, championKey, championName, champ
             className="cursor-pointer"
         >
         <Card isFooterBlurred isHoverable className="h-[auto] w-[auto]">
-            <CardHeader className="absolute z-10 top-1 flex-col !items-end w-full">
+            <CardHeader className="absolute z-10 top-1 flex-col items-end! w-full">
                 <div className="flex flex-col gap-2 items-end">
                     {mounted && skin && <OwnedSkinChecker />}
                     {mounted && !skin && (

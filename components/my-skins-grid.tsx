@@ -1,20 +1,20 @@
 "use client";
 import { getAllChampionsList } from "@/app/api/dataDragonAPI";
 import { db } from "@/db/IndexedDB";
-import { Input } from "@nextui-org/input";
+import { Input } from "@heroui/input";
 import { useLiveQuery } from "dexie-react-hooks";
 import { useCallback, useEffect, useState } from "react";
 import { title } from "@/components/primitives";
-import { Card, CardFooter } from "@nextui-org/card";
-import { Image } from "@nextui-org/image";
+import { Card, CardFooter } from "@heroui/card";
+import { Image } from "@heroui/image";
 import NextImage from "next/image";
-import { Button } from "@nextui-org/button";
+import { Button } from "@heroui/button";
 import { SkinsCollectionStats } from "./skins-collection-stats";
 import { RPPriceEditor } from "./rp-price-editor";
 import { OptionsDropdown } from "./options-dropdown";
 // import OptimizedAdBanner from "./optimized-ad-banner";
 
-import { Select, SelectItem } from "@nextui-org/select";
+import { Select, SelectItem } from "@heroui/select";
 
 function SkinCardImage({ name, skinNum }: { name: string; skinNum: number }) {
     const [src, setSrc] = useState(
@@ -91,7 +91,7 @@ export function MySkinsGrid() {
                 <Button
                     color="warning"
                     variant="flat"
-                    className="flex-shrink-0"
+                    className="shrink-0"
                     onPress={() => {
                         const btn = document.getElementById("bmc-wbtn") as HTMLElement | null;
                         if (btn) btn.click();
@@ -115,11 +115,11 @@ export function MySkinsGrid() {
                     defaultSelectedKeys={["all"]}
                     onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setPriceFilter(e.target.value)}
                 >
-                    <SelectItem key="all" value="all">All Prices</SelectItem>
-                    <SelectItem key="975" value="975">975 RP & Lower</SelectItem>
-                    <SelectItem key="1350" value="1350">1350 RP</SelectItem>
-                    <SelectItem key="1820" value="1820">1820 RP</SelectItem>
-                    <SelectItem key="3250" value="3250">3250 RP</SelectItem>
+                    <SelectItem key="all">All Prices</SelectItem>
+                    <SelectItem key="975">975 RP & Lower</SelectItem>
+                    <SelectItem key="1350">1350 RP</SelectItem>
+                    <SelectItem key="1820">1820 RP</SelectItem>
+                    <SelectItem key="3250">3250 RP</SelectItem>
                 </Select>
                 <OptionsDropdown />
             </div>

@@ -1,4 +1,5 @@
 allowBuilds:
+  '@heroui/shared-utils': true
   '@vercel/speed-insights': false
   sharp: false
   unrs-resolver: false

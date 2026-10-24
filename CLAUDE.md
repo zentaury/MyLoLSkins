@@ -37,11 +37,11 @@ No test suite is configured. UI changes should be verified manually in the brows
 
 ### Component conventions
 
-- UI primitives come from **NextUI** (`@nextui-org/*`). Don't swap them for raw HTML.
-- Styling is **Tailwind CSS** with `clsx` for conditional classes.
+- UI primitives come from **HeroUI** (`@heroui/*`). Don't swap them for raw HTML.
+- Styling is **Tailwind CSS v4** with `clsx` for conditional classes. There is no `tailwind.config.js`: Tailwind is configured in CSS (`styles/globals.css`: plugin, sources, dark variant, fonts) and the HeroUI theme colors live in `styles/hero.mjs`.
 - `components/primitives.ts` holds reusable Tailwind variant helpers (via `tailwind-variants`).
 - Theme is managed by `next-themes`; dark mode is the default (`defaultTheme: "dark"`).
-- `app/providers.tsx` wraps the tree with `NextUIProvider` + `NextThemesProvider`.
+- `app/providers.tsx` wraps the tree with `HeroUIProvider` + `NextThemesProvider`.
 
 ### Skin pricing
 

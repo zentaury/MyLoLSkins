@@ -1,10 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Card, CardHeader } from "@nextui-org/card";
-import { Image } from "@nextui-org/image";
+import { Card, CardHeader } from "@heroui/card";
+import { Image } from "@heroui/image";
 import NextImage from "next/image";
-import { Chip } from "@nextui-org/chip";
+import { Chip } from "@heroui/chip";
 import clsx from "clsx";
 import { ChampionCardProps } from "@/app/interfaces/champion-card-interface";
 
@@ -26,7 +26,7 @@ export function ChampionCard({ championKey, name, title, skinNumber, ownedCount,
             )}
             radius="lg"
         >
-            <CardHeader className="absolute z-10 top-1 flex-col !items-start w-full">
+            <CardHeader className="absolute z-10 top-1 flex-col items-start! w-full">
                 {isOwned && (
                     <div className="absolute top-0 right-0 z-20 m-2">
                         <Chip

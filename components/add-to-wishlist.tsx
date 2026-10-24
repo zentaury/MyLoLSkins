@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Button } from "@nextui-org/button";
-import { Tooltip } from "@nextui-org/tooltip";
+import { Button } from "@heroui/button";
+import { Tooltip } from "@heroui/tooltip";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "@/db/IndexedDB";
 import { HeartFilledIcon } from "@/components/icons";

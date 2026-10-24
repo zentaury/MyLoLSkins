@@ -2,12 +2,12 @@
 
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "@/db/IndexedDB";
-import { Card, CardFooter } from "@nextui-org/card";
-import { Image } from "@nextui-org/image";
+import { Card, CardFooter } from "@heroui/card";
+import { Image } from "@heroui/image";
 import NextImage from "next/image";
 import { title } from "@/components/primitives";
 import { AddToWishlist } from "./add-to-wishlist";
-import { Link } from "@nextui-org/link";
+import { Link } from "@heroui/link";
 
 export function WishlistGrid() {
 

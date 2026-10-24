@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Select, SelectItem } from "@nextui-org/select";
-import { Modal, ModalContent, ModalHeader, ModalBody } from "@nextui-org/modal";
+import { Select, SelectItem } from "@heroui/select";
+import { Modal, ModalContent, ModalHeader, ModalBody } from "@heroui/modal";
 import { db } from "@/db/IndexedDB";
 import { FlexCardModal } from "./flex-card-modal";
 import { PriceMigrationTool } from "./price-migration-tool";
@@ -107,16 +107,16 @@ export function OptionsDropdown() {
                 selectedKeys={[]}
                 onChange={handleSelectionChange}
             >
-                <SelectItem key="migrate" value="migrate">
+                <SelectItem key="migrate">
                     Auto-Assign RP Prices
                 </SelectItem>
-                <SelectItem key="export" value="export">
+                <SelectItem key="export">
                     Export Collection
                 </SelectItem>
-                <SelectItem key="import" value="import">
+                <SelectItem key="import">
                     Import Collection
                 </SelectItem>
-                <SelectItem key="share" value="share">
+                <SelectItem key="share">
                     Share Collection
                 </SelectItem>
             </Select>

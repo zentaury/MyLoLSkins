@@ -1,7 +1,7 @@
 "use client";
 
-import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/button";
+import { Input } from "@heroui/input";
+import { Button } from "@heroui/button";
 import { ChampionCard } from "./champion-card";
 // import OptimizedAdBanner from "./optimized-ad-banner";
 import { title } from "./primitives";
@@ -10,7 +10,7 @@ import { ChampionsGridProps } from "@/app/interfaces/champion-grid-interface";
 
 import { db } from "@/db/IndexedDB";
 import { useLiveQuery } from "dexie-react-hooks";
-import { Select, SelectItem } from "@nextui-org/select";
+import { Select, SelectItem } from "@heroui/select";
 
 export function ChampionsGrid({ championsList }: ChampionsGridProps) {
 
@@ -71,7 +71,7 @@ export function ChampionsGrid({ championsList }: ChampionsGridProps) {
                     <Button
                         color="warning"
                         variant="flat"
-                        className="flex-shrink-0"
+                        className="shrink-0"
                         onPress={() => {
                             const btn = document.getElementById("bmc-wbtn") as HTMLElement | null;
                             if (btn) btn.click();
@@ -95,10 +95,10 @@ export function ChampionsGrid({ championsList }: ChampionsGridProps) {
                         defaultSelectedKeys={["all"]}
                         onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setOwnershipFilter(e.target.value)}
                     >
-                        <SelectItem key="all" value="all">
+                        <SelectItem key="all">
                             Show All
                         </SelectItem>
-                        <SelectItem key="owned" value="owned">
+                        <SelectItem key="owned">
                             Owned Only
                         </SelectItem>
                     </Select>

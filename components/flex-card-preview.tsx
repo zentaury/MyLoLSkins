@@ -39,7 +39,7 @@ export function FlexCardPreview({ summonerName, totalSkins, totalValue, topSkin 
                 <div className="flex justify-between items-start">
                     <div>
                         <h2 className="text-amber-400 font-bold text-xl tracking-widest uppercase">My Skins Collection</h2>
-                        <h1 className="text-5xl font-extrabold mt-1 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500 pb-2">
+                        <h1 className="text-5xl font-extrabold mt-1 text-transparent bg-clip-text bg-linear-to-r from-amber-200 to-amber-500 pb-2">
                             {summonerName || "Summoner"}
                         </h1>
                     </div>
@@ -58,7 +58,7 @@ export function FlexCardPreview({ summonerName, totalSkins, totalValue, topSkin 
                     </div>
 
                     {/* Stat 2: Collection Value */}
-                    <div className="flex-1 bg-gradient-to-br from-amber-500/20 to-orange-600/20 backdrop-blur-lg p-6 rounded-xl border border-amber-500/30">
+                    <div className="flex-1 bg-linear-to-br from-amber-500/20 to-orange-600/20 backdrop-blur-lg p-6 rounded-xl border border-amber-500/30">
                         <p className="text-amber-200 text-sm font-semibold uppercase tracking-wider">Collection Value (RP)</p>
                         <p className="text-5xl font-black text-amber-500 mt-1">{formattedValue}</p>
                     </div>
@@ -76,7 +76,7 @@ export function FlexCardPreview({ summonerName, totalSkins, totalValue, topSkin 
                             <p className="text-xs text-white/60 mb-1 uppercase tracking-wider">Crown Jewel</p>
                             <div className="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10">
                                 <span className="font-bold text-amber-300">{topSkin.name}</span>
-                                <span className="text-amber-500 font-bold text-sm bg-black/50 px-2 py-0.5 rounded">{topSkin.price} RP</span>
+                                <span className="text-amber-500 font-bold text-sm bg-black/50 px-2 py-0.5 rounded-sm">{topSkin.price} RP</span>
                             </div>
                         </div>
                     )}

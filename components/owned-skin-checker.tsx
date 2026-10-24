@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckOutlined } from "@ant-design/icons";
-import { Tooltip } from "@nextui-org/tooltip";
+import { Tooltip } from "@heroui/tooltip";
 
 export const OwnedSkinChecker = () => {
     return (

@@ -1,6 +1,6 @@
-import { Card, CardBody, CardHeader } from "@nextui-org/card";
-import { Chip } from "@nextui-org/chip";
-import { Link } from "@nextui-org/link";
+import { Card, CardBody, CardHeader } from "@heroui/card";
+import { Chip } from "@heroui/chip";
+import { Link } from "@heroui/link";
 import { title, subtitle } from "@/components/primitives";
 
 export default function AboutPage() {
