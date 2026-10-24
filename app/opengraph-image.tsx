@@ -1,8 +1,5 @@
 import { ImageResponse } from 'next/og';
 
-// Route segment config
-export const runtime = 'edge';
-
 // Image metadata
 export const alt = 'My LoL Skins - Managed Your League of Legends Collection';
 export const size = {

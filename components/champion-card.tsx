@@ -39,7 +39,7 @@ export function ChampionCard({ championKey, name, title, skinNumber, ownedCount,
                     </div>
                 )}
                 <p className="text-tiny text-white/60 uppercase font-bold tracking-widest">{title}</p>
-                <h4 className="text-white font-display font-bold text-large">{name}</h4>
+                <h4 className="text-white font-bold text-large">{name}</h4>
             </CardHeader>
             <Image
                 isZoomed

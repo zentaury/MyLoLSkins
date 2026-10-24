@@ -15,7 +15,7 @@ No test suite is configured. UI changes should be verified manually in the brows
 
 ## Architecture Overview
 
-**My LoL Skins** is a Next.js 15 (App Router) PWA for tracking League of Legends skin collections. All data persists client-side in IndexedDB via Dexie — there is no backend or authentication.
+**My LoL Skins** is a Next.js 16 (App Router) PWA for tracking League of Legends skin collections. All data persists client-side in IndexedDB via Dexie — there is no backend or authentication.
 
 ### Data flow
 

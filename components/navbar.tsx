@@ -10,11 +10,11 @@ import {
 import { Link } from "@heroui/link";
 import { link as linkStyles } from "@heroui/theme";
 import NextLink from "next/link";
+import NextImage from "next/image";
 import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { HexLogo } from "@/components/icons";
 
 import packageJson from "@/package.json";
 import { Chip } from "@heroui/chip";
@@ -25,8 +25,8 @@ export const Navbar = () => {
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-2" href="/">
-            <HexLogo size={26} />
-            <p className="font-display font-bold text-inherit tracking-wide">My LoL Skins</p>
+            <NextImage src="/favicon.gif" alt="" width={26} height={26} />
+            <p className="font-bold text-inherit tracking-wide">My LoL Skins</p>
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">

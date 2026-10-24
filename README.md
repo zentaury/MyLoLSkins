@@ -92,7 +92,7 @@
 
 | Technology | Purpose |
 |------------|---------|
-| [Next.js 15](https://nextjs.org/) | React Framework (App Router) |
+| [Next.js 16](https://nextjs.org/) | React Framework (App Router) |
 | [React 19](https://react.dev/) | User Interface |
 | [TypeScript](https://www.typescriptlang.org/) | Type Safety |
 | [HeroUI](https://www.heroui.com/) | UI Components |

@@ -3,7 +3,8 @@ import { db } from "@/db/IndexedDB";
 import { Image } from "@heroui/image";
 import NextImage from "next/image";
 import { Card, CardFooter, CardHeader } from "@heroui/card";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
+import { useIsSSR } from "@react-aria/ssr";
 import { OwnedSkinChecker } from "./owned-skin-checker";
 import { useLiveQuery } from "dexie-react-hooks";
 import { Champion } from "@/app/interfaces/champion-interface";
@@ -12,7 +13,7 @@ import { getSkinRarityData } from "@/app/api/dataDragonAPI";
 import { estimateSkinPrice } from "@/utils/skinPricing";
 
 export function ChampionSkinImage({ championId, championKey, championName, championTitle, skinId, skinNum, skinName }: Champion) {
-    const [mounted, setMounted] = useState(false);
+    const mounted = !useIsSSR();
     const [imgSrc, setImgSrc] = useState(
         `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championId}_${skinNum}.jpg`
     );
@@ -22,10 +23,6 @@ export function ChampionSkinImage({ championId, championKey, championName, champ
         () => db.skins.where('skinId').equals(skinId).first(),
         [skinId]
     );
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     //add skin to db
     const addSkinToList = useCallback(async () => {

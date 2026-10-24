@@ -1,12 +1,6 @@
-import { Syne, DM_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 
-export const fontDisplay = Syne({
+export const fontSans = Inter({
   subsets: ["latin"],
-  variable: "--font-syne",
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-export const fontSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-inter",
 });

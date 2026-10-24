@@ -4,7 +4,7 @@ export default heroui({
   themes: {
     dark: {
       colors: {
-        background: "#010A13",
+        background: "#000000",
         foreground: "#F0E6D3",
         primary: {
           50: "#FFF8E1",

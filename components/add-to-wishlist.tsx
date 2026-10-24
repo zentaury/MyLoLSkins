@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useIsSSR } from "@react-aria/ssr";
 import { Button } from "@heroui/button";
 import { Tooltip } from "@heroui/tooltip";
 import { useLiveQuery } from "dexie-react-hooks";
@@ -13,17 +13,13 @@ interface AddToWishlistProps extends Champion {
 }
 
 export function AddToWishlist({ championId, championKey, championName, championTitle: _championTitle, skinId, skinNum, skinName, className }: AddToWishlistProps) {
-    const [mounted, setMounted] = useState(false);
+    const mounted = !useIsSSR();
 
     // Check if skin is in wishlist
     const inWishlist = useLiveQuery(
         () => db.wishlist.where('skinId').equals(skinId).count(),
         [skinId]
     );
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     const isAdded = mounted && (inWishlist || 0) > 0;
 

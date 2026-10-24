@@ -12,9 +12,18 @@ import { Button } from "@heroui/button";
 import { SkinsCollectionStats } from "./skins-collection-stats";
 import { RPPriceEditor } from "./rp-price-editor";
 import { OptionsDropdown } from "./options-dropdown";
+import { FlexCardModal } from "./flex-card-modal";
+import { SearchIcon } from "./icons";
 // import OptimizedAdBanner from "./optimized-ad-banner";
 
-import { Select, SelectItem } from "@heroui/select";
+// Valores del filtro de precio: los mismos que usa el filtrado de filteredSkins
+const PRICE_FILTERS = [
+    { value: "all", label: "All" },
+    { value: "975", label: "≤ 975" },
+    { value: "1350", label: "1350" },
+    { value: "1820", label: "1820" },
+    { value: "3250", label: "3250+" },
+];
 
 function SkinCardImage({ name, skinNum }: { name: string; skinNum: number }) {
     const [src, setSrc] = useState(
@@ -46,11 +55,6 @@ export function MySkinsGrid() {
 
     useLiveQuery(() => db.skins.toArray().then((response) => { setSkins(JSON.parse(JSON.stringify(response))) }));
 
-    const fetchAllChampios = async () => {
-        let championsList = await getAllChampionsList();
-        await setChampions(championsList);
-    }
-
     //filtering champion by input text
     const searchChampionFilter = (championList: any) => {
         return championList.filter(
@@ -79,56 +83,60 @@ export function MySkinsGrid() {
     }, [])
 
     useEffect(() => {
-        fetchAllChampios();
+        getAllChampionsList().then(setChampions);
     }, []);
+
+    const uniqueChampions = new Set(skins.map((skin: any) => skin.key)).size;
 
     return (
         <div id="container" className="w-full">
-            <h1 className={title()}>My Skins</h1>
-            <div className="py-5" />
+            <div className="flex flex-wrap items-end justify-between gap-4 mb-5">
+                <div>
+                    <h1 className={title()}>My Skins</h1>
+                    <p className="text-small text-default-500">
+                        {skins.length} {skins.length === 1 ? "skin" : "skins"} · {uniqueChampions} {uniqueChampions === 1 ? "champion" : "champions"}
+                    </p>
+                </div>
+                <div className="flex gap-2.5">
+                    <FlexCardModal />
+                    <OptionsDropdown />
+                </div>
+            </div>
             <SkinsCollectionStats />
-            <div className="flex flex-col xl:flex-row gap-4 w-full mb-4 items-center">
-                <Button
-                    color="warning"
-                    variant="flat"
-                    className="shrink-0"
-                    onPress={() => {
-                        const btn = document.getElementById("bmc-wbtn") as HTMLElement | null;
-                        if (btn) btn.click();
-                        else window.open("https://www.buymeacoffee.com/Zentaury", "_blank");
-                    }}
-                >
-                    ☕ Support
-                </Button>
+            <div className="flex flex-col md:flex-row md:items-center gap-3 w-full mb-5">
                 <Input
                     id="championNameInput"
-                    className="flex-1 w-full"
+                    className="w-full md:max-w-xs"
                     type="text"
-                    label="Find Champion"
-                    placeholder="Champion Name"
+                    radius="full"
+                    aria-label="Find champion"
+                    placeholder="Find champion…"
+                    startContent={<SearchIcon className="shrink-0 text-default-400" />}
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
                 />
-                <Select
-                    label="Filter by Price"
-                    className="w-full sm:w-48"
-                    defaultSelectedKeys={["all"]}
-                    onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setPriceFilter(e.target.value)}
-                >
-                    <SelectItem key="all">All Prices</SelectItem>
-                    <SelectItem key="975">975 RP & Lower</SelectItem>
-                    <SelectItem key="1350">1350 RP</SelectItem>
-                    <SelectItem key="1820">1820 RP</SelectItem>
-                    <SelectItem key="3250">3250 RP</SelectItem>
-                </Select>
-                <OptionsDropdown />
+                <div role="group" aria-label="Filter by price" className="flex flex-wrap gap-1.5">
+                    {PRICE_FILTERS.map(({ value, label }) => (
+                        <Button
+                            key={value}
+                            size="sm"
+                            radius="full"
+                            color={priceFilter === value ? "primary" : "default"}
+                            variant={priceFilter === value ? "solid" : "flat"}
+                            aria-pressed={priceFilter === value}
+                            onPress={() => setPriceFilter(value)}
+                        >
+                            {label}
+                        </Button>
+                    ))}
+                </div>
             </div>
-            <div id="gridContainer" className="py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {filteredSkins?.map((champion: any, index: number) => {
+            <div id="gridContainer" className="pb-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {filteredSkins?.map((champion: any) => {
                     return (
-                        <Card id="mySkinsCard" key={index} isFooterBlurred isHoverable className="h-[auto] w-[auto]">
+                        <Card id="mySkinsCard" key={champion.id} isHoverable className="h-[auto] w-[auto]">
                             <SkinCardImage name={champion.name} skinNum={champion.skinNum} />
-                            <CardFooter className="absolute bg-black/40 bottom-0 flex-col gap-2">
+                            <CardFooter className="absolute z-10 bottom-0 flex-col gap-2 pt-9 bg-linear-to-t from-black/95 to-transparent">
                                 <div className="w-full flex justify-between items-center">
                                     <h4 className="text-white font-semibold text-large">{champion.skinName}</h4>
                                     <Button color="danger" variant="ghost" radius="full" size="sm" onPress={() => deleteSkinOwned(champion.id)} >Remove</Button>

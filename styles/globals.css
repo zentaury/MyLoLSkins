@@ -5,8 +5,7 @@
 
 /* inline: next/font defines these variables on <body>, so they must resolve where the utility is used, not on :root */
 @theme inline {
-  --font-sans: var(--font-dm-sans);
-  --font-display: var(--font-syne);
+  --font-sans: var(--font-inter);
 }
 
 @layer base {
@@ -22,5 +21,10 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97'%3E%3Cpath d='M28 64L0 48V16L28 0L56 16V48L28 64ZM28 97L0 81V49L28 33L56 49V81L28 97Z' fill='none' stroke='rgba(200%2C155%2C60%2C0.06)' stroke-width='1'/%3E%3C/svg%3E");
     background-size: 56px 97px;
     background-attachment: fixed;
+  }
+
+  /* dark: plain black, no pattern */
+  .dark body {
+    background-image: none;
   }
 }

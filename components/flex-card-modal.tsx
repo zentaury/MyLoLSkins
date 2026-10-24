@@ -48,7 +48,7 @@ export function FlexCardModal() {
 
     return (
         <>
-            <Button onPress={onOpen} color="secondary" variant="flat" className="font-semibold">
+            <Button onPress={onOpen} color="primary" variant="solid" className="font-semibold">
                 Share Collection
             </Button>
 

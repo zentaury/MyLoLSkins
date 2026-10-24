@@ -1,16 +1,16 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Select, SelectItem } from "@heroui/select";
+import { Button } from "@heroui/button";
+import { Listbox, ListboxItem } from "@heroui/listbox";
 import { Modal, ModalContent, ModalHeader, ModalBody } from "@heroui/modal";
 import { db } from "@/db/IndexedDB";
-import { FlexCardModal } from "./flex-card-modal";
 import { PriceMigrationTool } from "./price-migration-tool";
 
 export function OptionsDropdown() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isMigrateModalOpen, setIsMigrateModalOpen] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
-    const shareButtonRef = useRef<HTMLButtonElement>(null);
 
     const handleExport = async () => {
         try {
@@ -83,43 +83,43 @@ export function OptionsDropdown() {
         reader.readAsText(file);
     };
 
-    const handleSelectionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const value = e.target.value;
-        
-        if (value === "migrate") {
+    const handleAction = (key: React.Key) => {
+        setIsMenuOpen(false);
+
+        if (key === "migrate") {
             setIsMigrateModalOpen(true);
-        } else if (value === "export") {
+        } else if (key === "export") {
             handleExport();
-        } else if (value === "import") {
+        } else if (key === "import") {
             fileInputRef.current?.click();
-        } else if (value === "share") {
-            // Trigger FlexCardModal button click
-            shareButtonRef.current?.click();
         }
     };
 
     return (
         <>
-            <Select
-                label="Options"
-                placeholder="Select an option"
-                className="w-full sm:w-48"
-                selectedKeys={[]}
-                onChange={handleSelectionChange}
+            {/* shortcut: @heroui/dropdown is not installed, so the menu is a Listbox inside a small Modal; swap it for Dropdown once the package is added */}
+            <Button
+                isIconOnly
+                variant="flat"
+                className="text-xl"
+                aria-label="Collection options"
+                aria-haspopup="dialog"
+                onPress={() => setIsMenuOpen(true)}
             >
-                <SelectItem key="migrate">
-                    Auto-Assign RP Prices
-                </SelectItem>
-                <SelectItem key="export">
-                    Export Collection
-                </SelectItem>
-                <SelectItem key="import">
-                    Import Collection
-                </SelectItem>
-                <SelectItem key="share">
-                    Share Collection
-                </SelectItem>
-            </Select>
+                ⋯
+            </Button>
+            <Modal isOpen={isMenuOpen} onOpenChange={setIsMenuOpen} size="xs" placement="auto">
+                <ModalContent>
+                    <ModalHeader>Collection options</ModalHeader>
+                    <ModalBody className="pb-4">
+                        <Listbox aria-label="Collection options" onAction={handleAction}>
+                            <ListboxItem key="export">Export Collection</ListboxItem>
+                            <ListboxItem key="import">Import Collection</ListboxItem>
+                            <ListboxItem key="migrate">Auto-Assign RP Prices</ListboxItem>
+                        </Listbox>
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
 
             {/* Hidden file input for import */}
             <input
@@ -144,20 +144,6 @@ export function OptionsDropdown() {
                     </ModalBody>
                 </ModalContent>
             </Modal>
-
-            {/* Hidden FlexCardModal - we'll trigger its button programmatically */}
-            <div className="hidden">
-                <div ref={(el) => {
-                    if (el) {
-                        const button = el.querySelector('button');
-                        if (button && shareButtonRef.current !== button) {
-                            shareButtonRef.current = button as HTMLButtonElement;
-                        }
-                    }
-                }}>
-                    <FlexCardModal />
-                </div>
-            </div>
         </>
     );
 }
